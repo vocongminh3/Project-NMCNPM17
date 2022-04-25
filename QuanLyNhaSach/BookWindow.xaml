@@ -37,7 +37,7 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
-            <!--các element binding từ selected item-->
+            <!--các element binding từ selected item test-->
             <materialDesign:Card Grid.Row="0" Margin="5">
                 <WrapPanel Margin="0 0 0 10">
                     <TextBox Text="{Binding TenSach}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tên Sách" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
