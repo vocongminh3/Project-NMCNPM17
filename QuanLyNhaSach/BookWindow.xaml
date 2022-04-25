@@ -37,14 +37,14 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
-            <!--các element binding từ selected item-->
+            <!--các element binding từ selected item test-->
             <materialDesign:Card Grid.Row="0" Margin="5">
                 <WrapPanel Margin="0 0 0 10">
-                    <TextBox Text="{Binding DisplayName}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tên Sách" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox Text="{Binding Address}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Thể Loại" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox Text="{Binding Phone}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tác Giả" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox Text="{Binding Email}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Số Lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <DatePicker VerticalAlignment="Center" SelectedDate="{Binding ContractDate}" Width="100" Margin="5 5 15 -7" materialDesign:HintAssist.Hint="Ngày Nhập" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    <TextBox Text="{Binding TenSach}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tên Sách" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Text="{Binding TheLoai}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Thể Loại" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Text="{Binding TacGia}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tác Giả" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Text="{Binding SoLuong}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Số Lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <DatePicker VerticalAlignment="Center" SelectedDate="{Binding NgayNhap}" Width="100" Margin="5 5 15 -7" materialDesign:HintAssist.Hint="Ngày Nhập" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                 </WrapPanel>
             </materialDesign:Card>
 
@@ -62,11 +62,11 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
-                                <GridViewColumn Header="Tên Sách" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
-                                <GridViewColumn Header="Thể Loại" DisplayMemberBinding="{Binding Address}"></GridViewColumn>
-                                <GridViewColumn Header="Tác Giả" DisplayMemberBinding="{Binding Phone}"></GridViewColumn>
-                                <GridViewColumn Header="Số Lượng" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
-                                <GridViewColumn Header="Ngày Nhập" DisplayMemberBinding="{Binding ContractDate}"></GridViewColumn>
+                                <GridViewColumn Header="Tên Sách" DisplayMemberBinding="{Binding TenSach}"></GridViewColumn>
+                                <GridViewColumn Header="Thể Loại" DisplayMemberBinding="{Binding TheLoai}"></GridViewColumn>
+                                <GridViewColumn Header="Tác Giả" DisplayMemberBinding="{Binding TacGia}"></GridViewColumn>
+                                <GridViewColumn Header="Số Lượng" DisplayMemberBinding="{Binding SoLuong}"></GridViewColumn>
+                                <GridViewColumn Header="Ngày Nhập" DisplayMemberBinding="{Binding NgayNhap}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

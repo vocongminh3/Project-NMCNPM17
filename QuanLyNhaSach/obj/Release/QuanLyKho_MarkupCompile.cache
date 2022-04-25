@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\Admin\Source\Repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\
+C:\Users\Admin\Source\Repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\obj\Release\
 QuanLyKho
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\Admin\Source\Repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\App.xaml
 51189630901
 
@@ -16,5 +16,5 @@ C:\Users\Admin\Source\Repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\App.xaml
 17-299015940
 BookWindow.xaml;LoginWindow.xaml;MainWindow.xaml;ResourceXAML\MainResource.xaml;UserControlKteam\ControlBarUC.xaml;
 
-False
+True
 
