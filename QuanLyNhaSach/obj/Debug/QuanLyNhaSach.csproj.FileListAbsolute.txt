@@ -126,3 +126,11 @@ C:\Users\Admin\Source\Repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\obj\Debug
 C:\Users\Admin\Source\Repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.csproj.CopyComplete
 C:\Users\Admin\Source\Repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\QuanLyKho.exe
 C:\Users\Admin\Source\Repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\QuanLyKho.pdb
+C:\Users\Admin\source\repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\BillWindow.g.cs
+C:\Users\Admin\source\repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\BillWindow.baml
+C:\Users\Admin\source\repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\CashWindow.g.cs
+C:\Users\Admin\source\repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\CashWindow.baml
+C:\Users\Admin\source\repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\CustomerWindow.g.cs
+C:\Users\Admin\source\repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\CustomerWindow.baml
+C:\Users\Admin\source\repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\UserWindow.g.cs
+C:\Users\Admin\source\repos\vocongminh3\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\UserWindow.baml

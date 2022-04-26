@@ -66,8 +66,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BillWindow.xaml.cs">
+      <DependentUpon>BillWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BookWindow.xaml.cs">
       <DependentUpon>BookWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CashWindow.xaml.cs">
+      <DependentUpon>CashWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerWindow.xaml.cs">
+      <DependentUpon>CustomerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -75,10 +84,25 @@
     <Compile Include="UserControlKteam\ControlBarUC.xaml.cs">
       <DependentUpon>ControlBarUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserWindow.xaml.cs">
+      <DependentUpon>UserWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Page Include="BillWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CashWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -103,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlKteam\ControlBarUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
