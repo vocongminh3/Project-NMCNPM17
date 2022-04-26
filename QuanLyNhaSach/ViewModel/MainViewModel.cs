@@ -12,6 +12,11 @@ namespace QuanLyNhaSach.ViewModel
     {
         public bool Isloaded = false;
         public ICommand LoadedWindowCommand { get; set; }
+        public ICommand BookCommand { get; set; }
+        public ICommand BillCommand { get; set; }
+        public ICommand CashCommand { get; set; }
+        public ICommand CustomerCommand { get; set; }
+        public ICommand UserCommand { get; set; }
 
         // mọi thứ xử lý sẽ nằm trong này
         public MainViewModel()
@@ -22,6 +27,13 @@ namespace QuanLyNhaSach.ViewModel
                 loginWindow.ShowDialog();
             }
               );           
+            BookCommand = new RelayCommand<object>((p) => { return true; }, (p) => {BookWindow wd = new BookWindow(); wd.ShowDialog(); });
+            BillCommand = new RelayCommand<object>((p) => { return true; }, (p) => { BillWindow wd = new BillWindow(); wd.ShowDialog(); });
+            CashCommand = new RelayCommand<object>((p) => { return true; }, (p) => { CashWindow wd = new CashWindow(); wd.ShowDialog(); });
+            CustomerCommand = new RelayCommand<object>((p) => { return true; }, (p) => { CustomerWindow wd = new CustomerWindow(); wd.ShowDialog(); });
+            UserCommand = new RelayCommand<object>((p) => { return true; }, (p) => { UserWindow wd = new UserWindow(); wd.ShowDialog(); });
+
         }
+
     }
 }

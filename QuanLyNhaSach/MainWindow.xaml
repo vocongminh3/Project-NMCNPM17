@@ -22,7 +22,7 @@
         
         Name="mainWindow"
         DataContext="{StaticResource MainVM}"
-        Title="Phần mềm Quản Lý Nhà Sách" Height="500" Width="719.159">
+        Title="Phần mềm Quản Lý Nhà Sách" Height="500" Width="728.159">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}"/>
@@ -64,7 +64,7 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" ToolTip="Phiếu Nhập Sách">
+                    <Button Grid.Column="0" Command="{Binding BookCommand}" ToolTip="Phiếu Nhập Sách">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -78,7 +78,7 @@
                             </Grid>
                         </Grid>
                     </Button>
-                    <Button Grid.Column="1" ToolTip="Phiếu Bán Sách" Click="Button_Click">
+                    <Button Grid.Column="1" Command="{Binding BillCommand}" ToolTip="Phiếu Bán Sách" Click="Button_Click">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -92,7 +92,7 @@
                             </Grid>
                         </Grid>
                     </Button>
-                    <Button Grid.Column="2" ToolTip="Phiếu Thu Tiền">
+                    <Button Grid.Column="2" Command="{Binding CashCommand}" ToolTip="Phiếu Thu Tiền">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -134,7 +134,7 @@
                             </Grid>
                         </Grid>
                     </Button>
-                    <Button Grid.Column="5" ToolTip="Khách hàng">
+                    <Button Grid.Column="5" Command="{Binding CustomerCommand}" ToolTip="Khách hàng">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -148,7 +148,7 @@
                             </Grid>
                         </Grid>
                     </Button>
-                    <Button Grid.Column="6" ToolTip="Người Dùng">
+                    <Button Grid.Column="6" Command="{Binding UserCommand}" ToolTip="Người Dùng">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>

@@ -10,30 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace QuanLyNhaSach
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for BillWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class BillWindow : Window
     {
-        ///http://materialdesigninxaml.net/home
-        public MainWindow()
+        public BillWindow()
         {
             InitializeComponent();
-        }
-
-        private void ControlBarUC_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
