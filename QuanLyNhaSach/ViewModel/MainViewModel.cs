@@ -23,8 +23,8 @@ namespace QuanLyNhaSach.ViewModel
         {
             LoadedWindowCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
                 Isloaded = true;
-                LoginWindow loginWindow = new LoginWindow();
-                loginWindow.ShowDialog();
+                //LoginWindow loginWindow = new LoginWindow();
+                //loginWindow.ShowDialog();
             }
               );           
             BookCommand = new RelayCommand<object>((p) => { return true; }, (p) => {BookWindow wd = new BookWindow(); wd.ShowDialog(); });

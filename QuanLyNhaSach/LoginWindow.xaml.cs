@@ -23,5 +23,22 @@ namespace QuanLyNhaSach
         {
             InitializeComponent();
         }
+
+        private void login_buttun(object sender, RoutedEventArgs e)
+        {
+            if(username.Text == "admin" && FloatingPasswordBox.Password == "admin")
+            {
+                this.Hide();
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.ShowDialog();
+
+            }
+        }
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            Application.Current.Shutdown();
+        }
     }
 }
