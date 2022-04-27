@@ -175,3 +175,8 @@ C:\Users\ThinkKING\Desktop\Final\TestClone\Project-NMCNPM17\QuanLyNhaSach\obj\De
 C:\Users\ThinkKING\Desktop\Final\TestClone\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.csproj.CopyComplete
 C:\Users\ThinkKING\Desktop\Final\TestClone\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\QuanLyKho.exe
 C:\Users\ThinkKING\Desktop\Final\TestClone\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\QuanLyKho.pdb
+C:\Users\ThinkKING\Desktop\Final\TestClone\Project-NMCNPM17\QuanLyNhaSach\bin\Debug\EntityFramework.dll
+C:\Users\ThinkKING\Desktop\Final\TestClone\Project-NMCNPM17\QuanLyNhaSach\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ThinkKING\Desktop\Final\TestClone\Project-NMCNPM17\QuanLyNhaSach\bin\Debug\EntityFramework.xml
+C:\Users\ThinkKING\Desktop\Final\TestClone\Project-NMCNPM17\QuanLyNhaSach\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ThinkKING\Desktop\Final\TestClone\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\QuanLyKho_Content.g.cs

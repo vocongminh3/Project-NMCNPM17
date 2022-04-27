@@ -26,13 +26,27 @@ namespace QuanLyNhaSach
 
         private void login_buttun(object sender, RoutedEventArgs e)
         {
-            if(username.Text == "admin" && FloatingPasswordBox.Password == "admin")
+            var db = new QuanLyKho.QuanLyNhaSachEntities();
+            var user = db.NguoiDungs.Find(username.Text);
+            if (user != null)
             {
-                this.Hide();
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.ShowDialog();
-
+                if(user.tendangnhap == username.Text && user.matkhau == FloatingPasswordBox.Password)
+                {
+                    this.Hide();
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("That Bai");
+                }
             }
+            else
+            {
+                MessageBox.Show("That Bai");
+            }
+            
+            
         }
         protected override void OnClosed(EventArgs e)
         {
