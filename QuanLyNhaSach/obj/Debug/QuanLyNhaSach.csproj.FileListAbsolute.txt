@@ -216,3 +216,5 @@ C:\Users\Admin\Source\Repos\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\QuanLyNhaSa
 C:\Users\Admin\Source\Repos\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\QuanLyNhaSach.csproj.CopyComplete
 C:\Users\Admin\Source\Repos\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\QuanLyKho.exe
 C:\Users\Admin\Source\Repos\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\QuanLyKho.pdb
+C:\Users\Admin\Source\Repos\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\StaffWindow.g.cs
+C:\Users\Admin\Source\Repos\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\StaffWindow.baml
