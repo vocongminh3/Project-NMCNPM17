@@ -33,6 +33,13 @@ namespace QuanLyNhaSach
                 mainWindow.ShowDialog();
 
             }
+            if (username.Text == "staff" && FloatingPasswordBox.Password == "staff")
+            {
+                this.Hide();
+                StaffWindow staffWindow = new StaffWindow();
+                staffWindow.ShowDialog();
+
+            }
         }
         protected override void OnClosed(EventArgs e)
         {
