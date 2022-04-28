@@ -341,14 +341,21 @@
                             <Separator></Separator>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <ListView>
+                            <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="STT"></GridViewColumn>
+                                        <GridViewColumn Header="STT" ></GridViewColumn>
                                         <GridViewColumn Header="Tên Sách"></GridViewColumn>
-                                        <GridViewColumn Header="Số lượng tồn"></GridViewColumn>
+                                        <GridViewColumn Header="Thể loại"></GridViewColumn>
+                                        <GridViewColumn Header="Tác giả"></GridViewColumn>
+                                        <GridViewColumn Header="Số lượng"></GridViewColumn>
                                     </GridView>
                                 </ListView.View>
+                                 <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
                             </ListView>
                         </Grid>
                     </Grid>
