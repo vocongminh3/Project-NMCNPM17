@@ -45,5 +45,17 @@ namespace QuanLyNhaSach
             var dataBookList = db.Saches.ToList();
             bookList.ItemsSource = dataBookList;
         }
+
+        private void searchButton_Click(object sender, RoutedEventArgs e)
+        {
+            var db = new QuanLyKho.QuanLyNhaSachEntities();
+            bookList.ItemsSource = db.Saches.Where(s => s.TenSach.Contains(searchText.Text)).ToList();
+        }
+
+        private void searchText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var db = new QuanLyKho.QuanLyNhaSachEntities();
+            bookList.ItemsSource = db.Saches.Where(s => s.TenSach.Contains(searchText.Text)).ToList();
+        }
     }
 }
