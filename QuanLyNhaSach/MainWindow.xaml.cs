@@ -41,5 +41,12 @@ namespace QuanLyNhaSach
 
             Application.Current.Shutdown();
         }
+
+        private void mainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var db = new QuanLyKho.QuanLyNhaSachEntities();
+            var dataBookList = db.Saches.ToList();
+            bookList.ItemsSource = dataBookList;
+        }
     }
 }
