@@ -22,7 +22,8 @@
         
         Name="mainWindow"
         DataContext="{StaticResource MainVM}"
-        Title="Phần mềm Quản Lý Nhà Sách" Height="500" Width="728.159">
+        Title="Phần mềm Quản Lý Nhà Sách" Height="500" Width="728.159"
+        Loaded="mainWindow_Loaded">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}"/>
@@ -341,14 +342,14 @@
                             <Separator></Separator>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                            <ListView Name="bookList" ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="STT" ></GridViewColumn>
-                                        <GridViewColumn Header="Tên Sách"></GridViewColumn>
-                                        <GridViewColumn Header="Thể loại"></GridViewColumn>
-                                        <GridViewColumn Header="Tác giả"></GridViewColumn>
-                                        <GridViewColumn Header="Số lượng"></GridViewColumn>
+                                        <GridViewColumn Header="STT" DisplayMemberBinding="{Binding MaSach}"></GridViewColumn>
+                                        <GridViewColumn Header="Tên Sách" DisplayMemberBinding="{Binding TenSach}"></GridViewColumn>
+                                        <GridViewColumn Header="Thể loại" DisplayMemberBinding="{Binding TenTheLoai}"></GridViewColumn>
+                                        <GridViewColumn Header="Tác giả" DisplayMemberBinding="{Binding TacGia}"></GridViewColumn>
+                                        <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"></GridViewColumn>
                                     </GridView>
                                 </ListView.View>
                                  <ListView.ItemsPanel>
