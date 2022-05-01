@@ -10,15 +10,6 @@
     <Property Name="SoLuongMua" Type="int" />
     <Property Name="DonGia" Type="nvarchar(max)" />
   </EntityType>
-  <EntityType Name="ChiTietPhieuNhap">
-    <Key>
-      <PropertyRef Name="MaPhieuNhap" />
-      <PropertyRef Name="MaSach" />
-    </Key>
-    <Property Name="MaPhieuNhap" Type="int" Nullable="false" />
-    <Property Name="MaSach" Type="int" Nullable="false" />
-    <Property Name="SoLuong" Type="int" />
-  </EntityType>
   <EntityType Name="HoaDon">
     <Key>
       <PropertyRef Name="MaHoaDon" />
@@ -53,6 +44,8 @@
     </Key>
     <Property Name="MaPhieuNhap" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NgayNhap" Type="date" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="MaSach" Type="int" />
   </EntityType>
   <EntityType Name="PhieuThuTien">
     <Key>
@@ -128,42 +121,6 @@ warning 6013: The table/view 'QuanLyNhaSach.dbo.QuyDinh' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietPh__MaPhi__239E4DCF">
-    <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="1" />
-    <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PhieuNhap">
-        <PropertyRef Name="MaPhieuNhap" />
-      </Principal>
-      <Dependent Role="ChiTietPhieuNhap">
-        <PropertyRef Name="MaPhieuNhap" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ChiTietPh__MaSac__0A9D95DB">
-    <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
-    <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Sach">
-        <PropertyRef Name="MaSach" />
-      </Principal>
-      <Dependent Role="ChiTietPhieuNhap">
-        <PropertyRef Name="MaSach" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ChiTietPh__MaSac__24927208">
-    <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
-    <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Sach">
-        <PropertyRef Name="MaSach" />
-      </Principal>
-      <Dependent Role="ChiTietPhieuNhap">
-        <PropertyRef Name="MaSach" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__HoaDon__MaKhachH__20C1E124">
     <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
@@ -188,9 +145,20 @@ warning 6013: The table/view 'QuanLyNhaSach.dbo.QuyDinh' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_PhieuNhap_Sach">
+    <End Role="Sach" Type="Self.Sach" Multiplicity="0..1" />
+    <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="MaSach" />
+      </Principal>
+      <Dependent Role="PhieuNhap">
+        <PropertyRef Name="MaSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="QuanLyNhaSachModelStoreContainer">
     <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ChiTietPhieuNhap" EntityType="Self.ChiTietPhieuNhap" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
@@ -210,18 +178,6 @@ warning 6013: The table/view 'QuanLyNhaSach.dbo.QuyDinh' does not have a primary
       <End Role="Sach" EntitySet="Sach" />
       <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietPh__MaPhi__239E4DCF" Association="Self.FK__ChiTietPh__MaPhi__239E4DCF">
-      <End Role="PhieuNhap" EntitySet="PhieuNhap" />
-      <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhap" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ChiTietPh__MaSac__0A9D95DB" Association="Self.FK__ChiTietPh__MaSac__0A9D95DB">
-      <End Role="Sach" EntitySet="Sach" />
-      <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhap" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ChiTietPh__MaSac__24927208" Association="Self.FK__ChiTietPh__MaSac__24927208">
-      <End Role="Sach" EntitySet="Sach" />
-      <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhap" />
-    </AssociationSet>
     <AssociationSet Name="FK__HoaDon__MaKhachH__20C1E124" Association="Self.FK__HoaDon__MaKhachH__20C1E124">
       <End Role="KhachHang" EntitySet="KhachHang" />
       <End Role="HoaDon" EntitySet="HoaDon" />
@@ -229,6 +185,10 @@ warning 6013: The table/view 'QuanLyNhaSach.dbo.QuyDinh' does not have a primary
     <AssociationSet Name="FK__KhachHang__MaPhi__1FCDBCEB" Association="Self.FK__KhachHang__MaPhi__1FCDBCEB">
       <End Role="PhieuThuTien" EntitySet="PhieuThuTien" />
       <End Role="KhachHang" EntitySet="KhachHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuNhap_Sach" Association="Self.FK_PhieuNhap_Sach">
+      <End Role="Sach" EntitySet="Sach" />
+      <End Role="PhieuNhap" EntitySet="PhieuNhap" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

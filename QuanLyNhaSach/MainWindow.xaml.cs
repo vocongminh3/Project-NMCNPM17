@@ -21,6 +21,14 @@ namespace QuanLyNhaSach
     public partial class MainWindow : Window
     {
         ///http://materialdesigninxaml.net/home
+        ///
+
+        private void LoadData()
+        {
+            var db = new QuanLyKho.QuanLyNhaSachEntities();
+            var dataBookList = db.Saches.ToList();
+            bookList.ItemsSource = dataBookList;
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -44,9 +52,7 @@ namespace QuanLyNhaSach
 
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var db = new QuanLyKho.QuanLyNhaSachEntities();
-            var dataBookList = db.Saches.ToList();
-            bookList.ItemsSource = dataBookList;
+            LoadData();
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
@@ -59,6 +65,29 @@ namespace QuanLyNhaSach
         {
             var db = new QuanLyKho.QuanLyNhaSachEntities();
             bookList.ItemsSource = db.Saches.Where(s => s.TenSach.Contains(searchText.Text)).ToList();
+        }
+
+        private void bookList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //var selectedBook = bookList.SelectedItem as QuanLyKho.Sach;
+            
+        }
+
+        private void inputBook_button(object sender, RoutedEventArgs e)
+        {
+            if (bookList.SelectedItem == null)
+            {
+                MessageBox.Show("Vui chọn sách cần thêm");
+            }
+            else
+            {
+                var selectedBook = bookList.SelectedItem as QuanLyKho.Sach;
+                this.Hide();
+                BookWindow bookWindow = new BookWindow(selectedBook);
+                bookWindow.ShowDialog();
+                LoadData();
+                this.ShowDialog();
+            }
         }
     }
 }

@@ -11,15 +11,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ChiTietPhieuNhaps">
-      <EntityTypeMapping TypeName="QuanLyNhaSachModel.ChiTietPhieuNhap">
-        <MappingFragment StoreEntitySet="ChiTietPhieuNhap">
-          <ScalarProperty Name="MaPhieuNhap" ColumnName="MaPhieuNhap" />
-          <ScalarProperty Name="MaSach" ColumnName="MaSach" />
-          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="HoaDons">
       <EntityTypeMapping TypeName="QuanLyNhaSachModel.HoaDon">
         <MappingFragment StoreEntitySet="HoaDon">
@@ -56,6 +47,8 @@
         <MappingFragment StoreEntitySet="PhieuNhap">
           <ScalarProperty Name="MaPhieuNhap" ColumnName="MaPhieuNhap" />
           <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="MaSach" ColumnName="MaSach" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
