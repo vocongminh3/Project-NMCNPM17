@@ -65,7 +65,7 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Command="{Binding BookCommand}" ToolTip="Phiếu Nhập Sách">
+                    <Button Grid.Column="0" Click="inputBook_button"  ToolTip="Phiếu Nhập Sách">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -336,11 +336,9 @@
                             <Separator></Separator>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150*"/>
-                                <ColumnDefinition Width="83*"/>
-                            </Grid.ColumnDefinitions>
-                            <ListView Name="bookList" ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2" Margin="0,0,0.2,-0.2">
+
+
+                            <ListView Name="bookList" ItemsSource="{Binding List}" SelectionChanged="bookList_SelectionChanged" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2" Margin="0,0,0.2,-0.2">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="STT" DisplayMemberBinding="{Binding MaSach}"></GridViewColumn>

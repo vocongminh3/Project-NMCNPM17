@@ -13,18 +13,6 @@
     <NavigationProperty Name="Sach" Relationship="Self.FK__ChiTietHo__MaSac__09A971A2" FromRole="ChiTietHoaDon" ToRole="Sach" />
     <NavigationProperty Name="Sach1" Relationship="Self.FK__ChiTietHo__MaSac__22AA2996" FromRole="ChiTietHoaDon" ToRole="Sach" />
   </EntityType>
-  <EntityType Name="ChiTietPhieuNhap">
-    <Key>
-      <PropertyRef Name="MaPhieuNhap" />
-      <PropertyRef Name="MaSach" />
-    </Key>
-    <Property Name="MaPhieuNhap" Type="Int32" Nullable="false" />
-    <Property Name="MaSach" Type="Int32" Nullable="false" />
-    <Property Name="SoLuong" Type="Int32" />
-    <NavigationProperty Name="PhieuNhap" Relationship="Self.FK__ChiTietPh__MaPhi__239E4DCF" FromRole="ChiTietPhieuNhap" ToRole="PhieuNhap" />
-    <NavigationProperty Name="Sach" Relationship="Self.FK__ChiTietPh__MaSac__0A9D95DB" FromRole="ChiTietPhieuNhap" ToRole="Sach" />
-    <NavigationProperty Name="Sach1" Relationship="Self.FK__ChiTietPh__MaSac__24927208" FromRole="ChiTietPhieuNhap" ToRole="Sach" />
-  </EntityType>
   <EntityType Name="HoaDon">
     <Key>
       <PropertyRef Name="MaHoaDon" />
@@ -63,7 +51,9 @@
     </Key>
     <Property Name="MaPhieuNhap" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NgayNhap" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="ChiTietPhieuNhaps" Relationship="Self.FK__ChiTietPh__MaPhi__239E4DCF" FromRole="PhieuNhap" ToRole="ChiTietPhieuNhap" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="MaSach" Type="Int32" />
+    <NavigationProperty Name="Sach" Relationship="Self.FK_PhieuNhap_Sach" FromRole="PhieuNhap" ToRole="Sach" />
   </EntityType>
   <EntityType Name="PhieuThuTien">
     <Key>
@@ -86,8 +76,7 @@
     <Property Name="DonGia" Type="Int32" />
     <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK__ChiTietHo__MaSac__09A971A2" FromRole="Sach" ToRole="ChiTietHoaDon" />
     <NavigationProperty Name="ChiTietHoaDons1" Relationship="Self.FK__ChiTietHo__MaSac__22AA2996" FromRole="Sach" ToRole="ChiTietHoaDon" />
-    <NavigationProperty Name="ChiTietPhieuNhaps" Relationship="Self.FK__ChiTietPh__MaSac__0A9D95DB" FromRole="Sach" ToRole="ChiTietPhieuNhap" />
-    <NavigationProperty Name="ChiTietPhieuNhaps1" Relationship="Self.FK__ChiTietPh__MaSac__24927208" FromRole="Sach" ToRole="ChiTietPhieuNhap" />
+    <NavigationProperty Name="PhieuNhaps" Relationship="Self.FK_PhieuNhap_Sach" FromRole="Sach" ToRole="PhieuNhap" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -135,42 +124,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietPh__MaPhi__239E4DCF">
-    <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="1" />
-    <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PhieuNhap">
-        <PropertyRef Name="MaPhieuNhap" />
-      </Principal>
-      <Dependent Role="ChiTietPhieuNhap">
-        <PropertyRef Name="MaPhieuNhap" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ChiTietPh__MaSac__0A9D95DB">
-    <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
-    <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Sach">
-        <PropertyRef Name="MaSach" />
-      </Principal>
-      <Dependent Role="ChiTietPhieuNhap">
-        <PropertyRef Name="MaSach" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ChiTietPh__MaSac__24927208">
-    <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
-    <End Role="ChiTietPhieuNhap" Type="Self.ChiTietPhieuNhap" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Sach">
-        <PropertyRef Name="MaSach" />
-      </Principal>
-      <Dependent Role="ChiTietPhieuNhap">
-        <PropertyRef Name="MaSach" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__HoaDon__MaKhachH__20C1E124">
     <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
@@ -195,9 +148,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_PhieuNhap_Sach">
+    <End Role="Sach" Type="Self.Sach" Multiplicity="0..1" />
+    <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="MaSach" />
+      </Principal>
+      <Dependent Role="PhieuNhap">
+        <PropertyRef Name="MaSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="QuanLyNhaSachEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
-    <EntitySet Name="ChiTietPhieuNhaps" EntityType="Self.ChiTietPhieuNhap" />
     <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
     <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
     <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
@@ -217,18 +181,6 @@
       <End Role="Sach" EntitySet="Saches" />
       <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietPh__MaPhi__239E4DCF" Association="Self.FK__ChiTietPh__MaPhi__239E4DCF">
-      <End Role="PhieuNhap" EntitySet="PhieuNhaps" />
-      <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhaps" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ChiTietPh__MaSac__0A9D95DB" Association="Self.FK__ChiTietPh__MaSac__0A9D95DB">
-      <End Role="Sach" EntitySet="Saches" />
-      <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhaps" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ChiTietPh__MaSac__24927208" Association="Self.FK__ChiTietPh__MaSac__24927208">
-      <End Role="Sach" EntitySet="Saches" />
-      <End Role="ChiTietPhieuNhap" EntitySet="ChiTietPhieuNhaps" />
-    </AssociationSet>
     <AssociationSet Name="FK__HoaDon__MaKhachH__20C1E124" Association="Self.FK__HoaDon__MaKhachH__20C1E124">
       <End Role="KhachHang" EntitySet="KhachHangs" />
       <End Role="HoaDon" EntitySet="HoaDons" />
@@ -236,6 +188,10 @@
     <AssociationSet Name="FK__KhachHang__MaPhi__1FCDBCEB" Association="Self.FK__KhachHang__MaPhi__1FCDBCEB">
       <End Role="PhieuThuTien" EntitySet="PhieuThuTiens" />
       <End Role="KhachHang" EntitySet="KhachHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuNhap_Sach" Association="Self.FK_PhieuNhap_Sach">
+      <End Role="Sach" EntitySet="Saches" />
+      <End Role="PhieuNhap" EntitySet="PhieuNhaps" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
