@@ -153,7 +153,27 @@ namespace QuanLyNhaSach
 
         private void deletePhieuNhap_Button(object sender, RoutedEventArgs e)
         {
-
+            var db = new QuanLyKho.QuanLyNhaSachEntities();
+            if (input.SelectedItem == null)
+            {
+                MessageBox.Show("Chọn Phiếu Nhập Cần Sửa");
+            }
+            else
+            {
+                // Lấy giá trị Mã phiếu nhập từ listview
+                var selectedInput = input.SelectedItem.ToString().Split(',').ToList()[5].Split(' ').ToList()[3].ToString();
+                int maPhieuNhap = Int32.Parse(selectedInput);
+                var PhieuNhap = db.PhieuNhaps.Find(maPhieuNhap);
+                var book = db.Saches.Find(PhieuNhap.MaSach);
+                PhieuNhap.SoLuong = Int32.Parse(quantity.Text);
+                PhieuNhap.NgayNhap = date.SelectedDate;
+                book.SoLuong -= PhieuNhap.SoLuong;
+                db.PhieuNhaps.Remove(PhieuNhap);
+                db.SaveChanges();
+                LoadData();
+                LoadInput();
+                input.SelectedItem = null;
+            }
         }
 
         //private void InitializeComponent()
