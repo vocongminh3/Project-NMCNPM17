@@ -41,6 +41,7 @@
             <!--các element binding từ selected item test-->
             <materialDesign:Card Grid.Row="0" Margin="5">
                 <WrapPanel Margin="0 0 0 10">
+                    
                     <TextBox Name="name" Text="" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tên Sách" IsEnabled="False" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBox Name="type" Text="" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Thể Loại" IsEnabled="False" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBox Name="author" Text="" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tác Giả" IsEnabled="False" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
@@ -52,13 +53,13 @@
             <materialDesign:Card Grid.Row="1" Margin="5">
                 <WrapPanel>
                     <Button Name="addButton" Click="addButton_Click" Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
-                    <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
-                    <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
+                    <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100" Click="updatePhieuNhap_Button"></Button>
+                    <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100" Click="deletePhieuNhap_Button"></Button>
                 </WrapPanel>
             </materialDesign:Card>
 
             <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
-                <ListView Name="input" ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView Name="input" ItemsSource="{Binding List}" SelectionChanged="input_SelectionChanged" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Id" DisplayMemberBinding="{Binding MaPhieuNhap}"></GridViewColumn>
