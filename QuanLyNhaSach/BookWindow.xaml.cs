@@ -28,6 +28,7 @@ namespace QuanLyNhaSach
             var db = new QuanLyKho.QuanLyNhaSachEntities();
             var data = (from s in db.Saches
                         join pn in db.PhieuNhaps on s.MaSach equals pn.MaSach
+                        //where
                         select new
                         {
                             s.TenSach,
@@ -39,6 +40,13 @@ namespace QuanLyNhaSach
                         }).ToList();
 
             input.ItemsSource = data;
+        }
+
+        private void LoadInput()
+        {
+            name.Text = sachChoie.TenSach;
+            type.Text = sachChoie.TenTheLoai;
+            author.Text = sachChoie.TacGia;
         }
 
         public bool checkNotEmpty(string str)
@@ -68,6 +76,7 @@ namespace QuanLyNhaSach
                 }
                 else
                 {
+
                     var phieunhap = new QuanLyKho.PhieuNhap();
                     phieunhap.MaSach = sachChoie.MaSach;
                     //phieunhap.NgayNhap = selectedDate.Value;
@@ -93,14 +102,58 @@ namespace QuanLyNhaSach
         {
 
             LoadData();
-            name.Text = sachChoie.TenSach;
-            type.Text = sachChoie.TenTheLoai;
-            author.Text = sachChoie.TacGia;
+            LoadInput();
         }
 
-        private void nameBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void updatePhieuNhap_Button(object sender, RoutedEventArgs e)
         {
+            var db = new QuanLyKho.QuanLyNhaSachEntities();
+            if (input.SelectedItem == null)
+            {
+                MessageBox.Show("Chọn Phiếu Nhập Cần Sửa");
+            }
+            else
+            {
+                // Lấy giá trị Mã phiếu nhập từ listview
+                var selectedInput = input.SelectedItem.ToString().Split(',').ToList()[5].Split(' ').ToList()[3].ToString();
+                int maPhieuNhap = Int32.Parse(selectedInput);
+                var PhieuNhap = db.PhieuNhaps.Find(maPhieuNhap);
+                var book = db.Saches.Find(PhieuNhap.MaSach);
+                int oldQuantity = (int)PhieuNhap.SoLuong;
+                PhieuNhap.SoLuong = Int32.Parse(quantity.Text);
+                PhieuNhap.NgayNhap = date.SelectedDate;
+                book.SoLuong += PhieuNhap.SoLuong - oldQuantity;
+                db.SaveChanges();
+                LoadData();
+                LoadInput();
+                input.SelectedItem = null;
+            }
+        }
+
+        private void input_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var db = new QuanLyKho.QuanLyNhaSachEntities();
+           
+            // Lấy giá trị Mã phiếu nhập từ listview
+            if (input.SelectedItem != null)
+            {
+                var selectedInput = input.SelectedItem.ToString().Split(',').ToList()[5].Split(' ').ToList()[3].ToString();
+                int maPhieuNhap = Int32.Parse(selectedInput);
+                var PhieuNhap = db.PhieuNhaps.Find(maPhieuNhap);
+                var book = db.Saches.Find(PhieuNhap.MaSach);
+                name.Text = book.TenSach;
+                type.Text = book.TenTheLoai;
+                author.Text = book.TacGia;
+                quantity.Text = PhieuNhap.SoLuong.ToString();
+                date.SelectedDate = PhieuNhap.NgayNhap;
+            }
             
+        }
+
+        private void deletePhieuNhap_Button(object sender, RoutedEventArgs e)
+        {
+
         }
 
         //private void InitializeComponent()
