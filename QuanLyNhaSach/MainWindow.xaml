@@ -179,7 +179,7 @@
                         <ColumnDefinition Width="653*"/>
                         <ColumnDefinition Width="34*"/>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:Card Margin="5,5,5,0" Grid.ColumnSpan="2">
+                    <!--<materialDesign:Card Margin="5,5,5,0" Grid.ColumnSpan="2">
                         <Grid Grid.Row="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"></RowDefinition>
@@ -237,7 +237,7 @@
                                                        Style="{StaticResource MaterialDesignDisplay1TextBlock}"/>
                                             <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
                                                 <StackPanel>
-                                                    <!--đưa gì vào thì đưa-->
+                                                    --><!--đưa gì vào thì đưa--><!--
                                                 </StackPanel>
                                             </materialDesign:PopupBox>
                                         </Grid>
@@ -267,7 +267,7 @@
                                             </TextBlock>
                                             <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
                                                 <StackPanel>
-                                                    <!--đưa gì vào thì đưa-->
+                                                    --><!--đưa gì vào thì đưa--><!--
                                                 </StackPanel>
                                             </materialDesign:PopupBox>
                                         </Grid>
@@ -297,7 +297,7 @@
                                             </TextBlock>
                                             <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
                                                 <StackPanel>
-                                                    <!--đưa gì vào thì đưa-->
+                                                    --><!--đưa gì vào thì đưa--><!--
                                                 </StackPanel>
                                             </materialDesign:PopupBox>
                                         </Grid>
@@ -305,7 +305,7 @@
                                 </Grid>
                             </Grid>
                         </Grid>
-                    </materialDesign:Card>
+                    </materialDesign:Card>-->
                 </Grid>
 
                 <!--list-->
@@ -338,7 +338,7 @@
                         <Grid Grid.Row="2">
 
 
-                            <ListView Name="bookList" ItemsSource="{Binding List}" SelectionChanged="bookList_SelectionChanged" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2" Margin="0,0,0.2,-0.2">
+                            <ListView Name="bookList" ItemsSource="{Binding List}" SelectionChanged="bookList_SelectionChanged" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="STT" DisplayMemberBinding="{Binding MaSach}"></GridViewColumn>
@@ -348,11 +348,6 @@
                                         <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"></GridViewColumn>
                                     </GridView>
                                 </ListView.View>
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <WrapPanel/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
                             </ListView>
                         </Grid>
                     </Grid>
