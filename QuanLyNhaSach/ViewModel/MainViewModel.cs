@@ -27,7 +27,7 @@ namespace QuanLyNhaSach.ViewModel
                 //loginWindow.ShowDialog();
             }
               );           
-            //BookCommand = new RelayCommand<object>((p) => { return true; }, (p) => {BookWindow wd = new BookWindow(); wd.ShowDialog(); });
+            BookCommand = new RelayCommand<object>((p) => { return true; }, (p) => {BookWindow wd = new BookWindow(); wd.ShowDialog(); });
             BillCommand = new RelayCommand<object>((p) => { return true; }, (p) => { BillWindow wd = new BillWindow(); wd.ShowDialog(); });
             CashCommand = new RelayCommand<object>((p) => { return true; }, (p) => { CashWindow wd = new CashWindow(); wd.ShowDialog(); });
             CustomerCommand = new RelayCommand<object>((p) => { return true; }, (p) => { CustomerWindow wd = new CustomerWindow(); wd.ShowDialog(); });

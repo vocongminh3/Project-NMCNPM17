@@ -73,21 +73,6 @@ namespace QuanLyNhaSach
             
         }
 
-        private void inputBook_button(object sender, RoutedEventArgs e)
-        {
-            if (bookList.SelectedItem == null)
-            {
-                MessageBox.Show("Vui chọn sách cần thêm");
-            }
-            else
-            {
-                var selectedBook = bookList.SelectedItem as QuanLyKho.Sach;
-                this.Hide();
-                BookWindow bookWindow = new BookWindow(selectedBook);
-                bookWindow.ShowDialog();
-                LoadData();
-                this.ShowDialog();
-            }
-        }
+        
     }
 }

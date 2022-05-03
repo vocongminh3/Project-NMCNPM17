@@ -42,23 +42,16 @@ namespace QuanLyNhaSach
             input.ItemsSource = data;
         }
 
-        private void LoadInput()
-        {
-            name.Text = sachChoie.TenSach;
-            type.Text = sachChoie.TenTheLoai;
-            author.Text = sachChoie.TacGia;
-        }
+
 
         public bool checkNotEmpty(string str)
         {
             return str != "";
         }
-        private QuanLyKho.Sach sachChoie;
 
 
-        public BookWindow(QuanLyKho.Sach sach)
+        public BookWindow()
         {
-            sachChoie = sach;
             InitializeComponent();
 
         }
@@ -78,13 +71,28 @@ namespace QuanLyNhaSach
                 {
 
                     var phieunhap = new QuanLyKho.PhieuNhap();
-                    phieunhap.MaSach = sachChoie.MaSach;
                     //phieunhap.NgayNhap = selectedDate.Value;
+                    var book = db.Saches.Where(s => s.TenSach == name.Text).FirstOrDefault();
+                    if(book == null)
+                    {
+                        var newBook = new QuanLyKho.Sach();
+                        newBook.TenSach = name.Text;
+                        newBook.TenTheLoai = type.Text;
+                        newBook.TacGia = author.Text;
+                        newBook.SoLuong = Int32.Parse(quantity.Text);
+                        db.Saches.Add(newBook);
+                        phieunhap.MaSach =  newBook.MaSach;
+                    }
+                    else
+                    {
+                        book.SoLuong += Int32.Parse(quantity.Text);
+                    }
+                    
                     phieunhap.NgayNhap = selectedDate.Value;
                     phieunhap.SoLuong = Int32.Parse(quantity.Text);
+                    //phieunhap.MaSach = book.MaSach;
                     db.PhieuNhaps.Add(phieunhap);
-                    var book = db.Saches.Find(sachChoie.MaSach);
-                    book.SoLuong += Int32.Parse(quantity.Text);
+                    
                     db.SaveChanges();
 
                 }
@@ -102,7 +110,6 @@ namespace QuanLyNhaSach
         {
 
             LoadData();
-            LoadInput();
         }
 
 
@@ -126,7 +133,6 @@ namespace QuanLyNhaSach
                 book.SoLuong += PhieuNhap.SoLuong - oldQuantity;
                 db.SaveChanges();
                 LoadData();
-                LoadInput();
                 input.SelectedItem = null;
             }
         }
@@ -174,7 +180,6 @@ namespace QuanLyNhaSach
                     db.PhieuNhaps.Remove(PhieuNhap);
                     db.SaveChanges();
                     LoadData();
-                    LoadInput();
                     input.SelectedItem = null;
                 }
                 else if (Result == MessageBoxResult.No)
