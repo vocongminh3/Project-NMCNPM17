@@ -65,7 +65,7 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Click="inputBook_button"  ToolTip="Phiếu Nhập Sách">
+                    <Button Grid.Column="0" Command="{Binding BookCommand}"   ToolTip="Phiếu Nhập Sách">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>

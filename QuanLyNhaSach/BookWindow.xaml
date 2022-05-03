@@ -42,9 +42,9 @@
             <materialDesign:Card Grid.Row="0" Margin="5">
                 <WrapPanel Margin="0 0 0 10">
                     
-                    <TextBox Name="name" Text="" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tên Sách" IsEnabled="False" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox Name="type" Text="" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Thể Loại" IsEnabled="False" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox Name="author" Text="" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tác Giả" IsEnabled="False" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Name="name" Text="" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tên Sách" IsEnabled="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Name="type" Text="" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Thể Loại" IsEnabled="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Name="author" Text="" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tác Giả" IsEnabled="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBox Name="quantity" Text="{Binding SoLuong, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Số Lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <DatePicker Name="date" VerticalAlignment="Center" SelectedDate="{Binding NgayNhap, UpdateSourceTrigger=PropertyChanged}" Width="100" Margin="5 5 15 -7" materialDesign:HintAssist.Hint="Ngày Nhập" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                 </WrapPanel>
