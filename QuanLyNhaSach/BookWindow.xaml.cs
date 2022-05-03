@@ -156,23 +156,32 @@ namespace QuanLyNhaSach
             var db = new QuanLyKho.QuanLyNhaSachEntities();
             if (input.SelectedItem == null)
             {
-                MessageBox.Show("Chọn Phiếu Nhập Cần Sửa");
+                MessageBox.Show("Chọn Phiếu Nhập Cần Xóa");
             }
             else
             {
-                // Lấy giá trị Mã phiếu nhập từ listview
-                var selectedInput = input.SelectedItem.ToString().Split(',').ToList()[5].Split(' ').ToList()[3].ToString();
-                int maPhieuNhap = Int32.Parse(selectedInput);
-                var PhieuNhap = db.PhieuNhaps.Find(maPhieuNhap);
-                var book = db.Saches.Find(PhieuNhap.MaSach);
-                PhieuNhap.SoLuong = Int32.Parse(quantity.Text);
-                PhieuNhap.NgayNhap = date.SelectedDate;
-                book.SoLuong -= PhieuNhap.SoLuong;
-                db.PhieuNhaps.Remove(PhieuNhap);
-                db.SaveChanges();
-                LoadData();
-                LoadInput();
-                input.SelectedItem = null;
+                var Result = MessageBox.Show("Bạn có chắc muốn xóa phiếu nhập", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (Result == MessageBoxResult.Yes)
+                {
+                    // Lấy giá trị Mã phiếu nhập từ listview
+                    var selectedInput = input.SelectedItem.ToString().Split(',').ToList()[5].Split(' ').ToList()[3].ToString();
+                    int maPhieuNhap = Int32.Parse(selectedInput);
+                    var PhieuNhap = db.PhieuNhaps.Find(maPhieuNhap);
+                    var book = db.Saches.Find(PhieuNhap.MaSach);
+                    PhieuNhap.SoLuong = Int32.Parse(quantity.Text);
+                    PhieuNhap.NgayNhap = date.SelectedDate;
+                    book.SoLuong -= PhieuNhap.SoLuong;
+                    db.PhieuNhaps.Remove(PhieuNhap);
+                    db.SaveChanges();
+                    LoadData();
+                    LoadInput();
+                    input.SelectedItem = null;
+                }
+                else if (Result == MessageBoxResult.No)
+                {
+                    
+                }
+                
             }
         }
 

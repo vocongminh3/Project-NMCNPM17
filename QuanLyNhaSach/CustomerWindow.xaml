@@ -20,7 +20,8 @@
         WindowStartupLocation="CenterScreen"
         x:Name="window"
         
-        Title="Sách" Height="500" Width="700">
+        Title="Sách" Height="500" Width="700"
+        Loaded="window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -40,31 +41,32 @@
             <!--các element binding từ selected item test-->
             <materialDesign:Card Grid.Row="0" Margin="5">
                 <WrapPanel Margin="0 0 0 10">
-                    <TextBox Text="{Binding TenKhachHang, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tên Khách Hàng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox Text="{Binding DienThoai, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Điện Thoại" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox Text="{Binding DiaChi, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Địa Chỉ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Name="name" Text="{Binding TenKhachHang, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tên Khách Hàng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Name="numberphone" Text="{Binding DienThoai, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Điện Thoại" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Name="adress" Text="{Binding DiaChi, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Địa Chỉ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Name="email" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </WrapPanel>
             </materialDesign:Card>
 
             <materialDesign:Card Grid.Row="1" Margin="5">
                 <WrapPanel>
-                    <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
-                    <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
-                    <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
+                    <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100" Click="addCustomer_Button"></Button>
+                    <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100" Click="updateCustomer_Button"></Button>
+                    <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100" Click="deleteCustomer_Button"></Button>
                 </WrapPanel>
             </materialDesign:Card>
 
             <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                    <ListView Name="customerListview" ItemsSource="{Binding List}" SelectionChanged="customerListview_SelectionChanged" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding MaHoaDon}"></GridViewColumn>
+                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding MaKhachHang}"></GridViewColumn>
                                 <GridViewColumn Header="Tên Khách Hàng" DisplayMemberBinding="{Binding TenKhachHang}"></GridViewColumn>
                                 <GridViewColumn Header="Điện Thoại" DisplayMemberBinding="{Binding DienThoai}"></GridViewColumn>
                                 <GridViewColumn Header="Địa Chỉ" DisplayMemberBinding="{Binding DiaChi}"></GridViewColumn>
                                 <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
+                                <GridViewColumn Header="Tiền" DisplayMemberBinding="{Binding Tien}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
