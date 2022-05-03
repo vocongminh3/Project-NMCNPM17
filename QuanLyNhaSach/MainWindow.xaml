@@ -65,7 +65,7 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Command="{Binding BookCommand}"   ToolTip="Phiếu Nhập Sách">
+                    <Button Grid.Column="0" Command="{Binding BookCommand}" Click="PhieuNhap_button"   ToolTip="Phiếu Nhập Sách">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -75,7 +75,11 @@
                                 <TextBlock Text="Phiếu Nhập Sách" HorizontalAlignment="Center"></TextBlock>
                             </Grid>
                             <Grid Grid.Row="1">
-                                <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="ArrowDownBoldCircleOutline" />
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="77*"/>
+                                    <ColumnDefinition Width="20*"/>
+                                </Grid.ColumnDefinitions>
+                                <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="ArrowDownBoldCircleOutline" Margin="36,0,16.8,0" />
                             </Grid>
                         </Grid>
                     </Button>
@@ -237,7 +241,9 @@
                                                        Style="{StaticResource MaterialDesignDisplay1TextBlock}"/>
                                             <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
                                                 <StackPanel>
-                                                    --><!--đưa gì vào thì đưa--><!--
+                                                    -->
+                    <!--đưa gì vào thì đưa-->
+                    <!--
                                                 </StackPanel>
                                             </materialDesign:PopupBox>
                                         </Grid>
@@ -267,7 +273,9 @@
                                             </TextBlock>
                                             <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
                                                 <StackPanel>
-                                                    --><!--đưa gì vào thì đưa--><!--
+                                                    -->
+                    <!--đưa gì vào thì đưa-->
+                    <!--
                                                 </StackPanel>
                                             </materialDesign:PopupBox>
                                         </Grid>
@@ -297,7 +305,9 @@
                                             </TextBlock>
                                             <materialDesign:PopupBox HorizontalAlignment="Right" Padding="2 0 2 0">
                                                 <StackPanel>
-                                                    --><!--đưa gì vào thì đưa--><!--
+                                                    -->
+                    <!--đưa gì vào thì đưa-->
+                    <!--
                                                 </StackPanel>
                                             </materialDesign:PopupBox>
                                         </Grid>
@@ -318,11 +328,11 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            
+
                             <TextBox
                                   Name="searchText"
                                   materialDesign:HintAssist.Hint="Tìm kiếm" Width="200" TextChanged="searchText_TextChanged"/>
-                                    
+
                             <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="5"
                                             Width="100"
                                             Content="Tìm kiếm"

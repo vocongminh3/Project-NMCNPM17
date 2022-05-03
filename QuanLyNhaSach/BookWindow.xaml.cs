@@ -43,8 +43,7 @@ namespace QuanLyNhaSach
         }
 
 
-
-        public bool checkNotEmpty(string str)
+            public bool checkNotEmpty(string str)
         {
             return str != "";
         }
@@ -104,6 +103,7 @@ namespace QuanLyNhaSach
                 MessageBox.Show("Dữ liệu thiếu");
             }
             LoadData();
+            
         }
 
         private void bookWindow_Loaded(object sender, RoutedEventArgs e)
