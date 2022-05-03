@@ -73,6 +73,14 @@ namespace QuanLyNhaSach
             
         }
 
-        
+
+        private void PhieuNhap_button(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            BookWindow bookWindow = new BookWindow();
+            bookWindow.ShowDialog();
+            LoadData();
+            this.ShowDialog();
+        }
     }
 }
