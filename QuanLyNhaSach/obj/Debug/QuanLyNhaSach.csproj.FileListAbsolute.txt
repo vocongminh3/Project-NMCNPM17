@@ -382,3 +382,4 @@ C:\Users\ThinkKING\Desktop\Final\TestClone\Test\Project-NMCNPM17\QuanLyNhaSach\b
 C:\Users\ThinkKING\Desktop\Final\TestClone\Test\Project-NMCNPM17\QuanLyNhaSach\bin\Debug\System.Text.Json.xml
 C:\Users\ThinkKING\Desktop\Final\TestClone\Test\Project-NMCNPM17\QuanLyNhaSach\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\ThinkKING\Desktop\Final\TestClone\Test\Project-NMCNPM17\QuanLyNhaSach\obj\Debug\QuanLyKho.exe.config
+C:\Users\ThinkKING\Desktop\Final\TestClone\Test\Project-NMCNPM17\QuanLyNhaSach\bin\Debug\DotNetProjects.Input.Toolkit.dll

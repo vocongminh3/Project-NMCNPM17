@@ -27,7 +27,7 @@ namespace QuanLyKho
         public string TenTheLoai { get; set; }
         public string TacGia { get; set; }
         public Nullable<int> SoLuong { get; set; }
-        public Nullable<int> DonGia { get; set; }
+        public Nullable<bool> BiXoa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
