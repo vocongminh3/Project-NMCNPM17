@@ -24,7 +24,7 @@ namespace QuanLyNhaSach
         private void LoadData()
         {
             var db = new QuanLyKho.QuanLyNhaSachEntities();
-            var data = db.KhachHangs.ToList();
+            var data = db.KhachHangs.Where(s=>s.BiXoa == false).ToList();
             
 
             customerListview.ItemsSource = data;
@@ -58,6 +58,7 @@ namespace QuanLyNhaSach
                 customer.DienThoai = numberphone.Text;
                 customer.Email = email.Text;
                 customer.Tien = 0;
+                customer.BiXoa = false;
                 db.KhachHangs.Add(customer);
                 db.SaveChanges();
                 LoadData();
@@ -150,8 +151,8 @@ namespace QuanLyNhaSach
                 {
                     var selected = customerListview.SelectedItem as QuanLyKho.KhachHang;
                     var selectedCustomer = db.KhachHangs.Find(selected.MaKhachHang);
-                    db.KhachHangs.Remove(selectedCustomer);
-
+                    //db.KhachHangs.Remove(selectedCustomer);
+                    selectedCustomer.BiXoa = true;
                     db.SaveChanges();
 
                     LoadData();

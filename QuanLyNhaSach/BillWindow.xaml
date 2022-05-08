@@ -20,7 +20,8 @@
         WindowStartupLocation="CenterScreen"
         x:Name="window"
         
-        Title="Sách" Height="500" Width="700">
+        Title="Sách" Height="500" Width="700"
+        Loaded="window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -40,18 +41,36 @@
             <!--các element binding từ selected item test-->
             <materialDesign:Card Grid.Row="0" Margin="5">
                 <WrapPanel Margin="0 0 0 10">
-                    <TextBox Text="{Binding TenKhachHang, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tên Khách Hàng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox Text="{Binding TenSach, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tên Sách" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox Text="{Binding TheLoai, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Thể Loại" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox Text="{Binding SoLuong, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Số Lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox Text="{Binding DonGia, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Đơn Giá" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <DatePicker VerticalAlignment="Center" SelectedDate="{Binding NgayLapHoaDon, UpdateSourceTrigger=PropertyChanged}" Width="134" Margin="5 5 15 -7" materialDesign:HintAssist.Hint="Ngày Lập Hóa Đơn" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    <ComboBox Name="customerCombobox" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tên Khách Hàng" Style="{StaticResource MaterialDesignFloatingHintComboBox}" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding MaKhachHang}" Width="16" Height="16"  />
+                                    <TextBlock Text="{Binding TenKhachHang}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox Name="bookCombobox"  Margin="5 5 15 5" SelectionChanged="bookCombobox_SelectionChanged" materialDesign:HintAssist.Hint="Tên Sách" Style="{StaticResource MaterialDesignFloatingHintComboBox}" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding MaSach}" Width="16" Height="16"  />
+                                    <TextBlock Text="{Binding TenSach}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBox Name="typeBook" Text="{Binding TheLoai, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Thể Loại" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Name="quantity" Text="{Binding SoLuong, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Số Lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Name="price"  Text="{Binding DonGia, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Đơn Giá" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <DatePicker Name="date" VerticalAlignment="Center" SelectedDate="{Binding NgayLapHoaDon, UpdateSourceTrigger=PropertyChanged}" Width="134" Margin="5 5 15 -7" materialDesign:HintAssist.Hint="Ngày Lập Hóa Đơn" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                 </WrapPanel>
             </materialDesign:Card>
 
             <materialDesign:Card Grid.Row="1" Margin="5">
                 <WrapPanel>
-                    <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
+                    <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100" Click="add_Button"></Button>
                     <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
                     <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
                 </WrapPanel>
@@ -59,7 +78,7 @@
 
             <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                    <ListView Name="billListview" ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Id" DisplayMemberBinding="{Binding MaHoaDon}"></GridViewColumn>

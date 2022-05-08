@@ -14,17 +14,11 @@ namespace QuanLyKho
     
     public partial class PhieuThuTien
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PhieuThuTien()
-        {
-            this.KhachHangs = new HashSet<KhachHang>();
-        }
-    
-        public int MaPhieuThuTien { get; set; }
+        public bool MaPhieuThuTien { get; set; }
         public Nullable<System.DateTime> NgayThuTien { get; set; }
         public Nullable<int> SoTienThu { get; set; }
+        public Nullable<int> MaKhachHang { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KhachHang> KhachHangs { get; set; }
+        public virtual KhachHang KhachHang { get; set; }
     }
 }
