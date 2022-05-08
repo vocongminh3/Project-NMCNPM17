@@ -71,7 +71,7 @@
             <materialDesign:Card Grid.Row="1" Margin="5">
                 <WrapPanel>
                     <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100" Click="add_Button"></Button>
-                    <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
+                    <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100" Click="update_Button"></Button>
                     <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
                 </WrapPanel>
             </materialDesign:Card>
@@ -84,8 +84,8 @@
                                 <GridViewColumn Header="Id" DisplayMemberBinding="{Binding MaHoaDon}"></GridViewColumn>
                                 <GridViewColumn Header="Tên Khách Hàng" DisplayMemberBinding="{Binding TenKhachHang}"></GridViewColumn>
                                 <GridViewColumn Header="Tên Sách" DisplayMemberBinding="{Binding TenSach}"></GridViewColumn>
-                                <GridViewColumn Header="Thể Loại" DisplayMemberBinding="{Binding TheLoai}"></GridViewColumn>
-                                <GridViewColumn Header="Số Lượng" DisplayMemberBinding="{Binding SoLuong}"></GridViewColumn>
+                                <GridViewColumn Header="Thể Loại" DisplayMemberBinding="{Binding TenTheLoai}"></GridViewColumn>
+                                <GridViewColumn Header="Số Lượng" DisplayMemberBinding="{Binding SoLuongMua}"></GridViewColumn>
                                 <GridViewColumn Header="Đơn Giá" DisplayMemberBinding="{Binding DonGia}"></GridViewColumn>
                                 <GridViewColumn Header="Ngày Lập Hóa Đơn" DisplayMemberBinding="{Binding NgayLapHoaDon}"></GridViewColumn>
                             </GridView>

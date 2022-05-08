@@ -31,7 +31,22 @@ namespace QuanLyNhaSach
         private void LoadData()
         {
             var db = new QuanLyKho.QuanLyNhaSachEntities();
-
+            var data = (from hd in db.HoaDons
+                        join cthd in db.ChiTietHoaDons on hd.MaHoaDon equals cthd.MaHoaDon
+                        join s in db.Saches on cthd.MaSach equals s.MaSach
+                        join kh in db.KhachHangs on hd.MaKhachHang equals kh.MaKhachHang
+                        where hd.BiXoa == false
+                        select new
+                        {
+                            hd.MaHoaDon,
+                            kh.TenKhachHang,
+                            s.TenSach,
+                            s.TenTheLoai,
+                            cthd.SoLuongMua,
+                            cthd.DonGia,
+                            hd.NgayLapHoaDon
+                        }).ToList();
+            billListview.ItemsSource = data;
         }
 
         public BillWindow()
@@ -42,7 +57,7 @@ namespace QuanLyNhaSach
         private void window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadDataCombobox();
-
+            LoadData();
         }
 
         private void bookCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -73,16 +88,23 @@ namespace QuanLyNhaSach
                 bill.NgayLapHoaDon = selectedDate.Value;
                 bill.BiXoa = false;
                 db.HoaDons.Add(bill);
-                db.SaveChanges();
                 
                 detailBill.DonGia = price.Text;
                 detailBill.SoLuongMua = int.Parse(quantity.Text);
                 detailBill.MaHoaDon = bill.MaHoaDon;
                 detailBill.MaSach = db.Saches.ToList()[bookCombobox.SelectedIndex].MaSach;
-
-
-
+                db.ChiTietHoaDons.Add(detailBill);
+                db.SaveChanges();
+                LoadData();
             }
+        }
+
+        private void update_Button(object sender, RoutedEventArgs e)
+        {
+            if(billListview.SelectedItem == null)
+            {
+                MessageBox.Show("");
+            }    
         }
     }
 }
