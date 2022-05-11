@@ -133,7 +133,7 @@ namespace QuanLyNhaSach
 
                     var billSelected = db.HoaDons.Find(idBillSelected);
                     var customer = db.KhachHangs.Find(customerSelected.MaKhachHang);
-
+                    //test
                 }
                 
             }    
