@@ -22,7 +22,7 @@ namespace QuanLyNhaSach
         private void LoadDataCombobox()
         {
             var db = new QuanLyKho.QuanLyNhaSachEntities();
-            var customers = db.KhachHangs.ToList();
+            var customers = db.KhachHangs.Where(s=> s.BiXoa == false).ToList();
             customerCombobox.ItemsSource = customers;
             var books = db.Saches.ToList();
             bookCombobox.ItemsSource = books;
@@ -84,7 +84,10 @@ namespace QuanLyNhaSach
                 var db = new QuanLyKho.QuanLyNhaSachEntities();
                 var bill = new QuanLyKho.HoaDon();
                 var detailBill = new QuanLyKho.ChiTietHoaDon();
-                bill.MaKhachHang = customerCombobox.SelectedIndex;
+                var customerSelected = customerCombobox.SelectedItem as QuanLyKho.KhachHang;
+                var bookSelected = bookCombobox.SelectedItem as QuanLyKho.Sach;
+
+                bill.MaKhachHang = customerSelected.MaKhachHang;
                 bill.NgayLapHoaDon = selectedDate.Value;
                 bill.BiXoa = false;
                 db.HoaDons.Add(bill);
@@ -92,7 +95,7 @@ namespace QuanLyNhaSach
                 detailBill.DonGia = price.Text;
                 detailBill.SoLuongMua = int.Parse(quantity.Text);
                 detailBill.MaHoaDon = bill.MaHoaDon;
-                detailBill.MaSach = db.Saches.ToList()[bookCombobox.SelectedIndex].MaSach;
+                detailBill.MaSach = bookSelected.MaSach;
                 db.ChiTietHoaDons.Add(detailBill);
                 db.SaveChanges();
                 LoadData();
@@ -103,8 +106,62 @@ namespace QuanLyNhaSach
         {
             if(billListview.SelectedItem == null)
             {
-                MessageBox.Show("");
+                MessageBox.Show("Vui lòng chọn hóa đơn cần sửa");
+            }
+            else
+            {
+                DateTime? selectedDate = date.SelectedDate;
+                if (customerCombobox.SelectedItem == null || bookCombobox.SelectedItem == null || date.SelectedDate == null)
+                {
+                    MessageBox.Show("Thiếu dữ liệu");
+                }
+                else if (quantity.Text.All(char.IsDigit) == false || price.Text.All(char.IsDigit) == false)
+                {
+                    MessageBox.Show("Số lượng và giá phải là số");
+                }
+                else
+                {
+                    var db = new QuanLyKho.QuanLyNhaSachEntities();
+                    var customerSelected = customerCombobox.SelectedItem as QuanLyKho.KhachHang;
+                    var bookSelected = bookCombobox.SelectedItem as QuanLyKho.Sach;
+                    var quantityBill = int.Parse(quantity.Text);
+                    var priceBill = int.Parse(price.Text);
+                    var date = selectedDate.Value;
+
+                    //Lấy mã khách hàng từ chuỗi chọn trên Listview
+                    var idBillSelected = int.Parse(billListview.SelectedItem.ToString().Split(',').ToList()[0].Split(' ').ToList()[3]);
+
+                    var billSelected = db.HoaDons.Find(idBillSelected);
+                    var customer = db.KhachHangs.Find(customerSelected.MaKhachHang);
+
+                }
+                
             }    
+        }
+
+        private void billListview_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+
+            //Lấy giá trị Mã phiếu nhập từ listview
+            //if (billListview.SelectedItem != null)
+            //{
+            //    var db = new QuanLyKho.QuanLyNhaSachEntities();
+            //    //var selectedInput = input.SelectedItem.ToString().Split(',').ToList()[5].Split(' ').ToList()[3].ToString();
+            //    var test = billListview.SelectedItem;
+                
+            //    var selectedBill = billListview.SelectedItem.ToString().Split(',').ToList()[0].Split(' ').ToList()[3];
+            //    int maHoaDon = int.Parse(selectedBill);
+            //    var bill = db.HoaDons.Find(maHoaDon);
+
+            //    var customer = db.KhachHangs.Where(c => c.MaKhachHang == bill.MaKhachHang).FirstOrDefault();
+            //    customerCombobox.SelectedItem = customer;
+            //    var detailBill = db.ChiTietHoaDons.Where(dt => dt.MaHoaDon == maHoaDon).FirstOrDefault();
+            //    var customers = db.KhachHangs.Where(s => s.BiXoa == false).ToList();
+            //    var book = db.Saches.ToList();
+
+
+            //}
         }
     }
 }
