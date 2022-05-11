@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 
 namespace QuanLyNhaSach
 {
+    ///test update code
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
