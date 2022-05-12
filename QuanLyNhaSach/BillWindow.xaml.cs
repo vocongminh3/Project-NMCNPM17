@@ -92,7 +92,7 @@ namespace QuanLyNhaSach
                 bill.BiXoa = false;
                 db.HoaDons.Add(bill);
                 
-                detailBill.DonGia = price.Text;
+                detailBill.DonGia = int.Parse(price.Text);
                 detailBill.SoLuongMua = int.Parse(quantity.Text);
                 detailBill.MaHoaDon = bill.MaHoaDon;
                 detailBill.MaSach = bookSelected.MaSach;
@@ -132,8 +132,20 @@ namespace QuanLyNhaSach
                     var idBillSelected = int.Parse(billListview.SelectedItem.ToString().Split(',').ToList()[0].Split(' ').ToList()[3]);
 
                     var billSelected = db.HoaDons.Find(idBillSelected);
-                    var customer = db.KhachHangs.Find(customerSelected.MaKhachHang);
-                    //test
+                    //var detailBill = db.ChiTietHoaDons.Where(s => s.MaHoaDon == billSelected.MaHoaDon).FirstOrDefault();
+                    var detailBill = db.ChiTietHoaDons.Single(s => s.MaHoaDon == billSelected.MaHoaDon);
+                    var newDetailBill = new QuanLyKho.ChiTietHoaDon();
+                    billSelected.NgayLapHoaDon = date;
+                    billSelected.MaKhachHang = customerSelected.MaKhachHang;
+
+                    newDetailBill.MaHoaDon = billSelected.MaHoaDon;
+                    newDetailBill.SoLuongMua = quantityBill;
+                    newDetailBill.DonGia = priceBill;
+                    newDetailBill.MaSach = bookSelected.MaSach;
+                    db.ChiTietHoaDons.Remove(detailBill);
+                    db.ChiTietHoaDons.Add(newDetailBill);
+                    db.SaveChanges();
+                    LoadData();
                 }
                 
             }    
@@ -144,24 +156,19 @@ namespace QuanLyNhaSach
 
 
             //Lấy giá trị Mã phiếu nhập từ listview
-            //if (billListview.SelectedItem != null)
-            //{
-            //    var db = new QuanLyKho.QuanLyNhaSachEntities();
-            //    //var selectedInput = input.SelectedItem.ToString().Split(',').ToList()[5].Split(' ').ToList()[3].ToString();
-            //    var test = billListview.SelectedItem;
-                
-            //    var selectedBill = billListview.SelectedItem.ToString().Split(',').ToList()[0].Split(' ').ToList()[3];
-            //    int maHoaDon = int.Parse(selectedBill);
-            //    var bill = db.HoaDons.Find(maHoaDon);
+            if (billListview.SelectedItem != null)
+            {
+                var db = new QuanLyKho.QuanLyNhaSachEntities();
+                //var selectedInput = input.SelectedItem.ToString().Split(',').ToList()[5].Split(' ').ToList()[3].ToString();
+                //Lấy mã khách hàng từ chuỗi chọn trên Listview
+                var idBillSelected = int.Parse(billListview.SelectedItem.ToString().Split(',').ToList()[0].Split(' ').ToList()[3]);
+                var billSelected = db.HoaDons.Find(idBillSelected);
+                var detailBill = db.ChiTietHoaDons.Where(s => s.MaHoaDon == billSelected.MaHoaDon).FirstOrDefault();
+                quantity.Text = detailBill.SoLuongMua.ToString();
+                price.Text = detailBill.DonGia.ToString();
+                date.SelectedDate = billSelected.NgayLapHoaDon;
 
-            //    var customer = db.KhachHangs.Where(c => c.MaKhachHang == bill.MaKhachHang).FirstOrDefault();
-            //    customerCombobox.SelectedItem = customer;
-            //    var detailBill = db.ChiTietHoaDons.Where(dt => dt.MaHoaDon == maHoaDon).FirstOrDefault();
-            //    var customers = db.KhachHangs.Where(s => s.BiXoa == false).ToList();
-            //    var book = db.Saches.ToList();
-
-
-            //}
+            }
         }
     }
 }

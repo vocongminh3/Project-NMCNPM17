@@ -17,10 +17,9 @@ namespace QuanLyKho
         public int MaHoaDon { get; set; }
         public int MaSach { get; set; }
         public Nullable<int> SoLuongMua { get; set; }
-        public string DonGia { get; set; }
+        public Nullable<int> DonGia { get; set; }
     
         public virtual HoaDon HoaDon { get; set; }
         public virtual Sach Sach { get; set; }
-        public virtual Sach Sach1 { get; set; }
     }
 }
