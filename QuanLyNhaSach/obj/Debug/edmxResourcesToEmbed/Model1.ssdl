@@ -8,7 +8,7 @@
     <Property Name="MaHoaDon" Type="int" Nullable="false" />
     <Property Name="MaSach" Type="int" Nullable="false" />
     <Property Name="SoLuongMua" Type="int" />
-    <Property Name="DonGia" Type="nvarchar(max)" />
+    <Property Name="DonGia" Type="int" />
   </EntityType>
   <EntityType Name="HoaDon">
     <Key>
@@ -87,7 +87,7 @@ warning 6013: The table/view 'QuanLyNhaSach.dbo.QuyDinh' does not have a primary
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <Association Name="FK__ChiTietHo__MaHoa__21B6055D">
+  <Association Name="FK_ChiTietHoaDon_HoaDon">
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
     <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
     <ReferentialConstraint>
@@ -99,19 +99,7 @@ warning 6013: The table/view 'QuanLyNhaSach.dbo.QuyDinh' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietHo__MaSac__09A971A2">
-    <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
-    <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Sach">
-        <PropertyRef Name="MaSach" />
-      </Principal>
-      <Dependent Role="ChiTietHoaDon">
-        <PropertyRef Name="MaSach" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ChiTietHo__MaSac__22AA2996">
+  <Association Name="FK_ChiTietHoaDon_Sach">
     <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
     <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
     <ReferentialConstraint>
@@ -168,15 +156,11 @@ warning 6013: The table/view 'QuanLyNhaSach.dbo.QuyDinh' does not have a primary
     <EntitySet Name="PhieuThuTien" EntityType="Self.PhieuThuTien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sach" EntityType="Self.Sach" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__ChiTietHo__MaHoa__21B6055D" Association="Self.FK__ChiTietHo__MaHoa__21B6055D">
+    <AssociationSet Name="FK_ChiTietHoaDon_HoaDon" Association="Self.FK_ChiTietHoaDon_HoaDon">
       <End Role="HoaDon" EntitySet="HoaDon" />
       <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietHo__MaSac__09A971A2" Association="Self.FK__ChiTietHo__MaSac__09A971A2">
-      <End Role="Sach" EntitySet="Sach" />
-      <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ChiTietHo__MaSac__22AA2996" Association="Self.FK__ChiTietHo__MaSac__22AA2996">
+    <AssociationSet Name="FK_ChiTietHoaDon_Sach" Association="Self.FK_ChiTietHoaDon_Sach">
       <End Role="Sach" EntitySet="Sach" />
       <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
     </AssociationSet>

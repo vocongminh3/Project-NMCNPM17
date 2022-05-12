@@ -18,7 +18,6 @@ namespace QuanLyKho
         public Sach()
         {
             this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
-            this.ChiTietHoaDons1 = new HashSet<ChiTietHoaDon>();
             this.PhieuNhaps = new HashSet<PhieuNhap>();
         }
     
@@ -31,8 +30,6 @@ namespace QuanLyKho
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuNhap> PhieuNhaps { get; set; }
     }

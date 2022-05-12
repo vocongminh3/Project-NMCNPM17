@@ -5,17 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="e922c5ae10b34a55a4d2207505e65465" Name="Diagram1" ZoomLevel="64">
-        <EntityTypeShape EntityType="QuanLyNhaSachModel.ChiTietHoaDon" Width="1.5" PointX="3" PointY="2.5" />
-        <EntityTypeShape EntityType="QuanLyNhaSachModel.HoaDon" Width="1.5" PointX="0.75" PointY="7.625" />
-        <EntityTypeShape EntityType="QuanLyNhaSachModel.KhachHang" Width="1.5" PointX="1.5" PointY="11.25" />
+        <EntityTypeShape EntityType="QuanLyNhaSachModel.ChiTietHoaDon" Width="1.5" PointX="3" PointY="2.375" />
+        <EntityTypeShape EntityType="QuanLyNhaSachModel.HoaDon" Width="1.5" PointX="0.75" PointY="7.375" />
+        <EntityTypeShape EntityType="QuanLyNhaSachModel.KhachHang" Width="1.5" PointX="1.5" PointY="11.125" />
         <EntityTypeShape EntityType="QuanLyNhaSachModel.NguoiDung" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="QuanLyNhaSachModel.PhieuNhap" Width="1.5" PointX="3" PointY="5.75" />
-        <EntityTypeShape EntityType="QuanLyNhaSachModel.PhieuThuTien" Width="1.5" PointX="3.75" PointY="11.625" />
+        <EntityTypeShape EntityType="QuanLyNhaSachModel.PhieuNhap" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="QuanLyNhaSachModel.PhieuThuTien" Width="1.5" PointX="3.75" PointY="11.5" />
         <EntityTypeShape EntityType="QuanLyNhaSachModel.Sach" Width="1.5" PointX="0.75" PointY="2.25" />
         <EntityTypeShape EntityType="QuanLyNhaSachModel.sysdiagram" Width="1.5" PointX="5.75" PointY="3.75" />
-        <AssociationConnector Association="QuanLyNhaSachModel.FK__ChiTietHo__MaHoa__21B6055D" />
-        <AssociationConnector Association="QuanLyNhaSachModel.FK__ChiTietHo__MaSac__09A971A2" />
-        <AssociationConnector Association="QuanLyNhaSachModel.FK__ChiTietHo__MaSac__22AA2996" />
+        <AssociationConnector Association="QuanLyNhaSachModel.FK_ChiTietHoaDon_HoaDon" />
+        <AssociationConnector Association="QuanLyNhaSachModel.FK_ChiTietHoaDon_Sach" />
         <AssociationConnector Association="QuanLyNhaSachModel.FK_HoaDon_KhachHang" />
         <AssociationConnector Association="QuanLyNhaSachModel.FK_PhieuThuTien_KhachHang" />
         <AssociationConnector Association="QuanLyNhaSachModel.FK_PhieuNhap_Sach" />
