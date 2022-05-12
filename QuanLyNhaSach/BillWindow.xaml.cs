@@ -146,6 +146,7 @@ namespace QuanLyNhaSach
                     db.ChiTietHoaDons.Add(newDetailBill);
                     db.SaveChanges();
                     LoadData();
+                    billListview.SelectedItem = null;
                 }
                 
             }    
@@ -168,6 +169,34 @@ namespace QuanLyNhaSach
                 price.Text = detailBill.DonGia.ToString();
                 date.SelectedDate = billSelected.NgayLapHoaDon;
 
+            }
+        }
+
+        private void delete_Button(object sender, RoutedEventArgs e)
+        {
+            if (billListview.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn cần xóa");
+            }
+            else
+            {
+                var Result = MessageBox.Show("Bạn có chắc muốn xóa xóa hóa đơn", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (Result == MessageBoxResult.Yes)
+                {
+                    var db = new QuanLyKho.QuanLyNhaSachEntities();
+                    //Lấy mã khách hàng từ chuỗi chọn trên Listview
+                    var idBillSelected = int.Parse(billListview.SelectedItem.ToString().Split(',').ToList()[0].Split(' ').ToList()[3]);
+
+                    var billSelected = db.HoaDons.Find(idBillSelected);
+                    billSelected.BiXoa = true;
+                    db.SaveChanges();
+                    LoadData();
+                    billListview.SelectedItem = null;
+                }
+                else if (Result == MessageBoxResult.No)
+                {
+                    
+                }
             }
         }
     }

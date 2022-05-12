@@ -26,7 +26,7 @@ namespace QuanLyNhaSach
         private void LoadData()
         {
             var db = new QuanLyKho.QuanLyNhaSachEntities();
-            var dataBookList = db.Saches.ToList();
+            var dataBookList = db.Saches.Where(s=>s.BiXoa == false).ToList();
             bookList.ItemsSource = dataBookList;
         }
         public MainWindow()
