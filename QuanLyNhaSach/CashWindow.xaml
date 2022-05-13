@@ -63,7 +63,7 @@
                 <WrapPanel>
                     <Button Click="add_Button" Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
                     <Button Click="update_Button" Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
-                    <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
+                    <Button Click="delete_Button" Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
                 </WrapPanel>
             </materialDesign:Card>
 

@@ -122,6 +122,10 @@ namespace QuanLyNhaSach
                     var idPhieuThuTien = int.Parse(cashListview.SelectedItem.ToString().Split(',').ToList()[0].Split(' ').ToList()[3]);
                     var cash = db.PhieuThuTiens.Find(idPhieuThuTien);
                     var customerSelected = customerCombobox.SelectedItem as QuanLyKho.KhachHang;
+                    var customer = db.KhachHangs.Find(customerSelected.MaKhachHang);
+                    customer.Tien = customer.Tien + int.Parse(money.Text) - cash.SoTienThu;
+                    db.SaveChanges();
+
                     cash.NgayThuTien = selectedDate.Value;
                     cash.SoTienThu = int.Parse(money.Text);
                     cash.MaKhachHang = customerSelected.MaKhachHang;
@@ -144,6 +148,35 @@ namespace QuanLyNhaSach
                 date.SelectedDate = cash.NgayThuTien;
             }
             
+        }
+
+        private void delete_Button(object sender, RoutedEventArgs e)
+        {
+            if (cashListview.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn phiếu thu tiền cần sửa");
+            }
+            else
+            {
+                var Result = MessageBox.Show("Bạn có chắc muốn phiếu thu tiền không", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (Result == MessageBoxResult.Yes)
+                {
+                    var db = new QuanLyKho.QuanLyNhaSachEntities();
+                    //Lấy mã khách hàng từ chuỗi chọn trên Listview
+                    var idPhieuThuTien = int.Parse(cashListview.SelectedItem.ToString().Split(',').ToList()[0].Split(' ').ToList()[3]);
+                    var cash = db.PhieuThuTiens.Find(idPhieuThuTien);
+                    var customer = db.KhachHangs.Find(cash.MaKhachHang);
+                    customer.Tien -= cash.SoTienThu;
+                    db.PhieuThuTiens.Remove(cash);
+                    db.SaveChanges();
+                    LoadData();
+                    cashListview.SelectedItem = null;
+                }
+                else if (Result == MessageBoxResult.No)
+                {
+
+                }
+            }
         }
     }
 }
