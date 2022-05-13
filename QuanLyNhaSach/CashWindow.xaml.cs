@@ -67,7 +67,7 @@ namespace QuanLyNhaSach
         private void add_Button(object sender, RoutedEventArgs e)
         {
             DateTime? selectedDate = date.SelectedDate;
-            if (customerCombobox.SelectedItem == null || date.SelectedDate == null)
+            if (customerCombobox.SelectedItem == null || date.SelectedDate == null || money.Text == "")
             {
                 MessageBox.Show("Thiếu dữ liệu");
             }
@@ -97,6 +97,53 @@ namespace QuanLyNhaSach
                 LoadData();
 
             }
+        }
+
+        private void update_Button(object sender, RoutedEventArgs e)
+        {
+            if(cashListview.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn cần sửa");
+            }
+            else
+            {
+                DateTime? selectedDate = date.SelectedDate;
+                if (customerCombobox.SelectedItem == null || date.SelectedDate == null || money.Text == "")
+                {
+                    MessageBox.Show("Thiếu dữ liệu");
+                }
+                else if (money.Text.All(char.IsDigit) == false)
+                {
+                    MessageBox.Show("Số lượng và giá phải là số");
+                }
+                else
+                {
+                    var db = new QuanLyKho.QuanLyNhaSachEntities();
+                    var idPhieuThuTien = int.Parse(cashListview.SelectedItem.ToString().Split(',').ToList()[0].Split(' ').ToList()[3]);
+                    var cash = db.PhieuThuTiens.Find(idPhieuThuTien);
+                    var customerSelected = customerCombobox.SelectedItem as QuanLyKho.KhachHang;
+                    cash.NgayThuTien = selectedDate.Value;
+                    cash.SoTienThu = int.Parse(money.Text);
+                    cash.MaKhachHang = customerSelected.MaKhachHang;
+
+                    db.SaveChanges();
+                    LoadData();
+                    cashListview.SelectedItem = null;
+                }
+            }
+        }
+
+        private void cashListview_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(cashListview.SelectedItem != null)
+            {
+                var db = new QuanLyKho.QuanLyNhaSachEntities();
+                var idPhieuThuTien = int.Parse(cashListview.SelectedItem.ToString().Split(',').ToList()[0].Split(' ').ToList()[3]);
+                var cash = db.PhieuThuTiens.Find(idPhieuThuTien);
+                money.Text = cash.SoTienThu.ToString();
+                date.SelectedDate = cash.NgayThuTien;
+            }
+            
         }
     }
 }
