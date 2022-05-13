@@ -14,7 +14,7 @@ namespace QuanLyKho
     
     public partial class PhieuThuTien
     {
-        public bool MaPhieuThuTien { get; set; }
+        public int MaPhieuThuTien { get; set; }
         public Nullable<System.DateTime> NgayThuTien { get; set; }
         public Nullable<int> SoTienThu { get; set; }
         public Nullable<int> MaKhachHang { get; set; }

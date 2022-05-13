@@ -17,7 +17,7 @@ namespace QuanLyNhaSach.ViewModel
         public ICommand CashCommand { get; set; }
         public ICommand CustomerCommand { get; set; }
         public ICommand UserCommand { get; set; }
-
+        public ICommand ReportCommand { get; set; }
         // mọi thứ xử lý sẽ nằm trong này
         public MainViewModel()
         {
@@ -32,6 +32,7 @@ namespace QuanLyNhaSach.ViewModel
             CashCommand = new RelayCommand<object>((p) => { return true; }, (p) => { CashWindow wd = new CashWindow(); wd.ShowDialog(); });
             CustomerCommand = new RelayCommand<object>((p) => { return true; }, (p) => { CustomerWindow wd = new CustomerWindow(); wd.ShowDialog(); });
             UserCommand = new RelayCommand<object>((p) => { return true; }, (p) => { UserWindow wd = new UserWindow(); wd.ShowDialog(); });
+            ReportCommand = new RelayCommand<object>((p) => { return true; }, (p) => { ReportWindow wd = new ReportWindow(); wd.ShowDialog(); });
 
         }
 

@@ -57,7 +57,7 @@
           <Key>
             <PropertyRef Name="MaPhieuThuTien" />
           </Key>
-          <Property Name="MaPhieuThuTien" Type="bit" Nullable="false" />
+          <Property Name="MaPhieuThuTien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NgayThuTien" Type="datetime" />
           <Property Name="SoTienThu" Type="int" />
           <Property Name="MaKhachHang" Type="int" />
@@ -275,7 +275,7 @@ warning 6013: The table/view 'QuanLyNhaSach.dbo.QuyDinh' does not have a primary
           <Key>
             <PropertyRef Name="MaPhieuThuTien" />
           </Key>
-          <Property Name="MaPhieuThuTien" Type="Boolean" Nullable="false" />
+          <Property Name="MaPhieuThuTien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NgayThuTien" Type="DateTime" Precision="3" />
           <Property Name="SoTienThu" Type="Int32" />
           <Property Name="MaKhachHang" Type="Int32" />

@@ -89,7 +89,7 @@
     <Key>
       <PropertyRef Name="MaPhieuThuTien" />
     </Key>
-    <Property Name="MaPhieuThuTien" Type="Boolean" Nullable="false" />
+    <Property Name="MaPhieuThuTien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NgayThuTien" Type="DateTime" Precision="3" />
     <Property Name="SoTienThu" Type="Int32" />
     <Property Name="MaKhachHang" Type="Int32" />

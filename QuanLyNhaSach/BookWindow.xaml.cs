@@ -43,7 +43,7 @@ namespace QuanLyNhaSach
         }
 
 
-            public bool checkNotEmpty(string str)
+        public bool checkNotEmpty(string str)
         {
             return str != "";
         }
