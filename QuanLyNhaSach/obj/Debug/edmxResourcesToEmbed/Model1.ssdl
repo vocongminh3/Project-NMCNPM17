@@ -52,7 +52,7 @@
     <Key>
       <PropertyRef Name="MaPhieuThuTien" />
     </Key>
-    <Property Name="MaPhieuThuTien" Type="bit" Nullable="false" />
+    <Property Name="MaPhieuThuTien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NgayThuTien" Type="datetime" />
     <Property Name="SoTienThu" Type="int" />
     <Property Name="MaKhachHang" Type="int" />

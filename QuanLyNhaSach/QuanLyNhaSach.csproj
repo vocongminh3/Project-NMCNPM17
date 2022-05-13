@@ -112,6 +112,9 @@
     <Compile Include="BillWindow.xaml.cs">
       <DependentUpon>BillWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ReportWindow.xaml.cs">
+      <DependentUpon>ReportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BookWindow.xaml.cs">
       <DependentUpon>BookWindow.xaml</DependentUpon>
     </Compile>
@@ -178,6 +181,10 @@
     <Page Include="BillWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReportWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="BookWindow.xaml">
       <SubType>Designer</SubType>

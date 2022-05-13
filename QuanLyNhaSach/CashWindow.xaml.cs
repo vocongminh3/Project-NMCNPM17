@@ -19,9 +19,84 @@ namespace QuanLyNhaSach
     /// </summary>
     public partial class CashWindow : Window
     {
+        private void LoadDatacombobox()
+        {
+            var db = new QuanLyKho.QuanLyNhaSachEntities();
+            var customers = db.KhachHangs.Where(s => s.BiXoa == false).ToList();
+            customerCombobox.ItemsSource = customers;
+        }
+
+        private void LoadData()
+        {
+            var db = new QuanLyKho.QuanLyNhaSachEntities();
+            var data = (from ptt in db.PhieuThuTiens
+                        join kh in db.KhachHangs on ptt.MaKhachHang equals kh.MaKhachHang
+                        where kh.BiXoa == false
+                        select new
+                        {
+                            ptt.MaPhieuThuTien,
+                            kh.TenKhachHang,
+                            kh.DienThoai,
+                            kh.DiaChi,
+                            kh.Email,
+                            ptt.SoTienThu,
+                            ptt.NgayThuTien
+                        }).ToList();
+            cashListview.ItemsSource = data;
+        }
         public CashWindow()
         {
             InitializeComponent();
+        }
+
+        private void window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadDatacombobox();
+            LoadData();
+        }
+
+        private void customerCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selected = customerCombobox.SelectedItem as QuanLyKho.KhachHang;
+            phone.Text = selected.DienThoai;
+            email.Text = selected.Email;
+            adress.Text = selected.DiaChi;
+            //money.Text = selected.Tien.ToString();
+        }
+
+        private void add_Button(object sender, RoutedEventArgs e)
+        {
+            DateTime? selectedDate = date.SelectedDate;
+            if (customerCombobox.SelectedItem == null || date.SelectedDate == null)
+            {
+                MessageBox.Show("Thiếu dữ liệu");
+            }
+            else if (money.Text.All(char.IsDigit) == false )
+            {
+                MessageBox.Show("Số lượng và giá phải là số");
+            }
+            else
+            {
+                var db = new QuanLyKho.QuanLyNhaSachEntities();
+                var customer = customerCombobox.SelectedItem as QuanLyKho.KhachHang;
+                var cash = new QuanLyKho.PhieuThuTien();
+                var moneyText = int.Parse(money.Text);
+
+                cash.MaKhachHang = customer.MaKhachHang;
+                cash.NgayThuTien = selectedDate.Value;
+                cash.SoTienThu = moneyText;
+
+                //cap nhap so tien khach hang
+                var changeCustomer = db.KhachHangs.Find(customer.MaKhachHang);
+                changeCustomer.Tien += moneyText;
+                db.SaveChanges();
+
+                db.PhieuThuTiens.Add(cash);
+                db.SaveChanges();
+
+                LoadData();
+
+            }
         }
     }
 }
