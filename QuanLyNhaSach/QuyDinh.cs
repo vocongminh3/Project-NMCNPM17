@@ -14,10 +14,11 @@ namespace QuanLyKho
     
     public partial class QuyDinh
     {
-        public int SoLuongSachTonToiThieuDeNhap { get; set; }
+        public Nullable<int> SoLuongSachTonToiThieuDeNhap { get; set; }
         public Nullable<int> SoLuongSachNhapToiThieuDeNhap { get; set; }
         public Nullable<int> TienToiDa { get; set; }
         public Nullable<int> SoLuongSachTonToiThieuSauKhiBan { get; set; }
         public Nullable<bool> TienThuLonHonNo { get; set; }
+        public int id { get; set; }
     }
 }

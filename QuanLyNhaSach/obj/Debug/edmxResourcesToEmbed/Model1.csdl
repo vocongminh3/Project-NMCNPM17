@@ -181,13 +181,13 @@
   </Association>
   <EntityType Name="QuyDinh">
     <Key>
-      <PropertyRef Name="SoLuongSachTonToiThieuDeNhap" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="SoLuongSachTonToiThieuDeNhap" Type="Int32" Nullable="false" />
+    <Property Name="SoLuongSachTonToiThieuDeNhap" Type="Int32" />
     <Property Name="SoLuongSachNhapToiThieuDeNhap" Type="Int32" />
     <Property Name="TienToiDa" Type="Int32" />
     <Property Name="SoLuongSachTonToiThieuSauKhiBan" Type="Int32" />
     <Property Name="TienThuLonHonNo" Type="Boolean" />
-    <Property Name="id" Type="Int32" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
   </EntityType>
 </Schema>
