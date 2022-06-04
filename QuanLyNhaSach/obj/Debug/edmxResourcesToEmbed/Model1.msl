@@ -86,5 +86,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="QuyDinhs">
+      <EntityTypeMapping TypeName="QuanLyNhaSachModel.QuyDinh">
+        <MappingFragment StoreEntitySet="QuyDinh">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TienThuLonHonNo" ColumnName="TienThuLonHonNo" />
+          <ScalarProperty Name="SoLuongSachTonToiThieuSauKhiBan" ColumnName="SoLuongSachTonToiThieuSauKhiBan" />
+          <ScalarProperty Name="TienToiDa" ColumnName="TienToiDa" />
+          <ScalarProperty Name="SoLuongSachNhapToiThieuDeNhap" ColumnName="SoLuongSachNhapToiThieuDeNhap" />
+          <ScalarProperty Name="SoLuongSachTonToiThieuDeNhap" ColumnName="SoLuongSachTonToiThieuDeNhap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

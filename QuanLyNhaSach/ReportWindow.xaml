@@ -58,6 +58,16 @@
                                 materialDesign:HintAssist.Hint="Năm"
                                 Style="{StaticResource MaterialDesignFloatingHintComboBox}" Width="100">
                     </ComboBox>
+                    <ComboBox Name="test"  Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tên Khách Hàng" Style="{StaticResource MaterialDesignFloatingHintComboBox}" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding NgayNhap}" Width="auto" Height="auto"  />
+                                    
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                     <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="5"
                                             Width="100"
                                             Content="Tìm kiếm"
@@ -72,10 +82,10 @@
                 <ListView Name="input" ItemsSource="{Binding List}"  SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding TenSach}"></GridViewColumn>
-                                <GridViewColumn Header="Tên Sách" DisplayMemberBinding="{Binding TonDau}"></GridViewColumn>
-                                <GridViewColumn Header="Thể Loại" DisplayMemberBinding="{Binding PhatSinh}"></GridViewColumn>
-                                <GridViewColumn Header="Tác Giả" DisplayMemberBinding="{Binding TonCuoi}"></GridViewColumn>
+                                <GridViewColumn Header="Tên Sách" DisplayMemberBinding="{Binding TenSach}"></GridViewColumn>
+                                <GridViewColumn Header="Tồn Đầu" DisplayMemberBinding="{Binding TonDau}"></GridViewColumn>
+                                <GridViewColumn Header="Phát Sinh" DisplayMemberBinding="{Binding PhatSinh}"></GridViewColumn>
+                                <GridViewColumn Header="Tồn Cuối" DisplayMemberBinding="{Binding TonCuoi}"></GridViewColumn>
                                
                             </GridView>
                         </ListView.View>

@@ -57,15 +57,17 @@
     <Property Name="SoTienThu" Type="int" />
     <Property Name="MaKhachHang" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'QuanLyNhaSach.dbo.QuyDinh' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="QuyDinh">
-          <Property Name="SoLuongSachTonToiThieuDeNhap" Type="int" />
-          <Property Name="SoLuongSachNhapToiThieuDeNhap" Type="int" />
-          <Property Name="TienToiDa" Type="int" />
-          <Property Name="SoLuongSachTonToiThieuSauKhiBan" Type="int" />
-          <Property Name="TienThuLonHonNo" Type="bit" />
-        </EntityType>-->
+  <EntityType Name="QuyDinh">
+    <Key>
+      <PropertyRef Name="SoLuongSachTonToiThieuDeNhap" />
+    </Key>
+    <Property Name="SoLuongSachTonToiThieuDeNhap" Type="int" Nullable="false" />
+    <Property Name="SoLuongSachNhapToiThieuDeNhap" Type="int" />
+    <Property Name="TienToiDa" Type="int" />
+    <Property Name="SoLuongSachTonToiThieuSauKhiBan" Type="int" />
+    <Property Name="TienThuLonHonNo" Type="bit" />
+    <Property Name="id" Type="int" />
+  </EntityType>
   <EntityType Name="Sach">
     <Key>
       <PropertyRef Name="MaSach" />
@@ -154,6 +156,7 @@ warning 6013: The table/view 'QuanLyNhaSach.dbo.QuyDinh' does not have a primary
     <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PhieuNhap" EntityType="Self.PhieuNhap" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PhieuThuTien" EntityType="Self.PhieuThuTien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuyDinh" EntityType="Self.QuyDinh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sach" EntityType="Self.Sach" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ChiTietHoaDon_HoaDon" Association="Self.FK_ChiTietHoaDon_HoaDon">

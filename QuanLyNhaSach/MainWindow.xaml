@@ -111,7 +111,7 @@
                             </Grid>
                         </Grid>
                     </Button>
-                    <Button Grid.Column="3"  ToolTip="Quy Định">
+                    <Button Grid.Column="3"  ToolTip="Quy Định" Command="{Binding RuleCommand}">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>

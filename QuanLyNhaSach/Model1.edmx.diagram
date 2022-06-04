@@ -18,6 +18,7 @@
         <AssociationConnector Association="QuanLyNhaSachModel.FK_HoaDon_KhachHang" />
         <AssociationConnector Association="QuanLyNhaSachModel.FK_PhieuThuTien_KhachHang" />
         <AssociationConnector Association="QuanLyNhaSachModel.FK_PhieuNhap_Sach" />
+        <EntityTypeShape EntityType="QuanLyNhaSachModel.QuyDinh" Width="1.5" PointX="5.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
