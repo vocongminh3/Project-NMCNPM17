@@ -83,7 +83,7 @@
                             </Grid>
                         </Grid>
                     </Button>
-                    <Button Grid.Column="1" Command="{Binding BillCommand}" ToolTip="Phiếu Bán Sách" Click="Button_Click">
+                    <Button Grid.Column="1" Command="{Binding BillCommand}" ToolTip="Phiếu Bán Sách" Click="bansach_button">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>

@@ -84,21 +84,43 @@ namespace QuanLyNhaSach
                 var db = new QuanLyKho.QuanLyNhaSachEntities();
                 var bill = new QuanLyKho.HoaDon();
                 var detailBill = new QuanLyKho.ChiTietHoaDon();
+                var rule = db.QuyDinhs.FirstOrDefault();
                 var customerSelected = customerCombobox.SelectedItem as QuanLyKho.KhachHang;
                 var bookSelected = bookCombobox.SelectedItem as QuanLyKho.Sach;
+                var book = db.Saches.Find(bookSelected.MaSach);
+                if (rule.TienToiDa < int.Parse(price.Text) * int.Parse(quantity.Text))
+                {
+                    MessageBox.Show("Tiền nợ tối đa k quá " + rule.TienToiDa.ToString());
+                }
+                else if (rule.SoLuongSachTonToiThieuSauKhiBan > book.SoLuong - int.Parse(quantity.Text))
+                {
+                    MessageBox.Show("Số lượng tồn sau khi bán phải lơn hơn " + rule.SoLuongSachTonToiThieuSauKhiBan.ToString());
+                }
+                else
+                {
+                    bill.MaKhachHang = customerSelected.MaKhachHang;
+                    bill.NgayLapHoaDon = selectedDate.Value;
+                    bill.BiXoa = false;
 
-                bill.MaKhachHang = customerSelected.MaKhachHang;
-                bill.NgayLapHoaDon = selectedDate.Value;
-                bill.BiXoa = false;
-                db.HoaDons.Add(bill);
-                
-                detailBill.DonGia = int.Parse(price.Text);
-                detailBill.SoLuongMua = int.Parse(quantity.Text);
-                detailBill.MaHoaDon = bill.MaHoaDon;
-                detailBill.MaSach = bookSelected.MaSach;
-                db.ChiTietHoaDons.Add(detailBill);
-                db.SaveChanges();
-                LoadData();
+                    db.HoaDons.Add(bill);
+
+                    detailBill.DonGia = int.Parse(price.Text);
+                    detailBill.SoLuongMua = int.Parse(quantity.Text);
+                    detailBill.MaHoaDon = bill.MaHoaDon;
+                    detailBill.MaSach = bookSelected.MaSach;
+
+                    db.ChiTietHoaDons.Add(detailBill);
+
+
+                    book.SoLuong -= int.Parse(quantity.Text);
+
+                    var customer = db.KhachHangs.Find(customerSelected.MaKhachHang);
+                    customer.Tien -= int.Parse(quantity.Text) * int.Parse(quantity.Text);
+
+
+                    db.SaveChanges();
+                    LoadData();
+                }
             }
         }
 

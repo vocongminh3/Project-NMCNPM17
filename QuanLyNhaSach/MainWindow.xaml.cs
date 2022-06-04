@@ -82,5 +82,14 @@ namespace QuanLyNhaSach
             LoadData();
             this.ShowDialog();
         }
+
+        private void bansach_button(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            BillWindow billWindow = new BillWindow();
+            billWindow.ShowDialog();
+            LoadData();
+            this.ShowDialog();
+        }
     }
 }
