@@ -57,7 +57,7 @@
                         </Style>
                     </Grid.Resources>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
+                        
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -153,20 +153,7 @@
                             </Grid>
                         </Grid>
                     </Button>
-                    <Button Grid.Column="6" Command="{Binding UserCommand}" ToolTip="Người Dùng">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
-                                <TextBlock Text="Người Dùng" HorizontalAlignment="Center"></TextBlock>
-                            </Grid>
-                            <Grid Grid.Row="1">
-                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="Account" />
-                            </Grid>
-                        </Grid>
-                    </Button>
+                    
                 </Grid>
             </Grid>
 

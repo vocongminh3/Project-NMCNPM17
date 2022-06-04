@@ -19,6 +19,13 @@ namespace QuanLyNhaSach
     /// </summary>
     public partial class StaffWindow : Window
     {
+        private void LoadData()
+        {
+            var db = new QuanLyKho.QuanLyNhaSachEntities();
+            var dataBookList = db.Saches.Where(s => s.BiXoa == false).ToList();
+            bookList.ItemsSource = dataBookList;
+        }
+
         public StaffWindow()
         {
             InitializeComponent();
@@ -41,9 +48,7 @@ namespace QuanLyNhaSach
 
         private void staffWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var db = new QuanLyKho.QuanLyNhaSachEntities();
-            var dataBookList = db.Saches.ToList();
-            bookList.ItemsSource = dataBookList;
+            LoadData();
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
@@ -56,6 +61,29 @@ namespace QuanLyNhaSach
         {
             var db = new QuanLyKho.QuanLyNhaSachEntities();
             bookList.ItemsSource = db.Saches.Where(s => s.TenSach.Contains(searchText.Text)).ToList();
+        }
+
+        private void PhieuNhap_button(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            BookWindow bookWindow = new BookWindow();
+            bookWindow.ShowDialog();
+            LoadData();
+            this.ShowDialog();
+        }
+
+        private void bansach_button(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            BillWindow billWindow = new BillWindow();
+            billWindow.ShowDialog();
+            LoadData();
+            this.ShowDialog();
+        }
+
+        private void bookList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

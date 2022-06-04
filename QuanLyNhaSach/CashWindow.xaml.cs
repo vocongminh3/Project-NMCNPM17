@@ -75,28 +75,62 @@ namespace QuanLyNhaSach
             {
                 MessageBox.Show("Số lượng và giá phải là số");
             }
-            else
+            else 
             {
                 var db = new QuanLyKho.QuanLyNhaSachEntities();
-                var customer = customerCombobox.SelectedItem as QuanLyKho.KhachHang;
+                var rule = db.QuyDinhs.FirstOrDefault();
+                var customerSelected = customerCombobox.SelectedItem as QuanLyKho.KhachHang;
+                var customer = db.KhachHangs.Find(customerSelected.MaKhachHang);
                 var cash = new QuanLyKho.PhieuThuTien();
                 var moneyText = int.Parse(money.Text);
+                if ((bool)rule.TienThuLonHonNo == true)
+                {
+                    if (moneyText + customer.Tien >= 0 )
+                    {
+                        MessageBox.Show("Số tiền thu không vượt quá số tiền đang nợ");
+                    }
+                    else
+                    {
+                        cash.MaKhachHang = customer.MaKhachHang;
+                        cash.NgayThuTien = selectedDate.Value;
+                        cash.SoTienThu = moneyText;
 
-                cash.MaKhachHang = customer.MaKhachHang;
-                cash.NgayThuTien = selectedDate.Value;
-                cash.SoTienThu = moneyText;
-
-                //cap nhap so tien khach hang
-                var changeCustomer = db.KhachHangs.Find(customer.MaKhachHang);
-                changeCustomer.Tien += moneyText;
+                        //cap nhap so tien khach hang
+                        var changeCustomer = db.KhachHangs.Find(customer.MaKhachHang);
+                        changeCustomer.Tien += moneyText;
 
 
-                db.SaveChanges();
+                        db.SaveChanges();
 
-                db.PhieuThuTiens.Add(cash);
-                db.SaveChanges();
+                        db.PhieuThuTiens.Add(cash);
+                        db.SaveChanges();
 
-                LoadData();
+                        LoadData();
+                    }    
+                }
+                else
+                {
+                    cash.MaKhachHang = customer.MaKhachHang;
+                    cash.NgayThuTien = selectedDate.Value;
+                    cash.SoTienThu = moneyText;
+
+                    //cap nhap so tien khach hang
+                    var changeCustomer = db.KhachHangs.Find(customer.MaKhachHang);
+                    changeCustomer.Tien += moneyText;
+
+
+                    db.SaveChanges();
+
+                    db.PhieuThuTiens.Add(cash);
+                    db.SaveChanges();
+
+                    LoadData();
+                }    
+
+                
+                
+
+                
 
             }
         }
