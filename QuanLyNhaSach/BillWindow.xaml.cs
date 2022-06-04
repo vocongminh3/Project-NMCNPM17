@@ -24,7 +24,7 @@ namespace QuanLyNhaSach
             var db = new QuanLyKho.QuanLyNhaSachEntities();
             var customers = db.KhachHangs.Where(s=> s.BiXoa == false).ToList();
             customerCombobox.ItemsSource = customers;
-            var books = db.Saches.ToList();
+            var books = db.Saches.Where(s=>s.BiXoa == false).ToList();
             bookCombobox.ItemsSource = books;
         }
 
@@ -111,11 +111,11 @@ namespace QuanLyNhaSach
 
                     db.ChiTietHoaDons.Add(detailBill);
 
-
+                    //tru so luong sach
                     book.SoLuong -= int.Parse(quantity.Text);
-
+                    // tru tien khach hang
                     var customer = db.KhachHangs.Find(customerSelected.MaKhachHang);
-                    customer.Tien -= int.Parse(quantity.Text) * int.Parse(quantity.Text);
+                    customer.Tien -= int.Parse(quantity.Text) * int.Parse(price.Text);
 
 
                     db.SaveChanges();
@@ -164,6 +164,12 @@ namespace QuanLyNhaSach
                     newDetailBill.SoLuongMua = quantityBill;
                     newDetailBill.DonGia = priceBill;
                     newDetailBill.MaSach = bookSelected.MaSach;
+
+
+                    //var book = db.Saches.Find(bookSelected.MaSach);
+                    ////tru so luong sach
+                    //book.SoLuong += int.Parse(quantity.Text) - detailBill.SoLuongMua;
+
                     db.ChiTietHoaDons.Remove(detailBill);
                     db.ChiTietHoaDons.Add(newDetailBill);
                     db.SaveChanges();

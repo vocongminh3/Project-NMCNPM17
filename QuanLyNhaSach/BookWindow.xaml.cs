@@ -78,8 +78,11 @@ namespace QuanLyNhaSach
                     {
                         MessageBox.Show("Số lượng nhập phải lớn hơn  " + quydinh.SoLuongSachNhapToiThieuDeNhap.ToString());
                     }
-                    else
+                    else if(quydinh.SoLuongSachTonToiThieuDeNhap < book.SoLuong)
                     {
+                        MessageBox.Show("Chỉ nhâp những sách có lượng tồn ít hơn " + quydinh.SoLuongSachTonToiThieuDeNhap.ToString());
+                    }
+                    else {
                         if (book == null)
                         {
                             var newBook = new QuanLyKho.Sach();
@@ -90,11 +93,7 @@ namespace QuanLyNhaSach
                             db.Saches.Add(newBook);
                             phieunhap.MaSach = newBook.MaSach;
                         }
-                        else if (quydinh.SoLuongSachTonToiThieuDeNhap < book.SoLuong)
-                        {
-                            MessageBox.Show("Chỉ nhâp những sách có lượng tồn ít hơn " + quydinh.SoLuongSachTonToiThieuDeNhap.ToString());
-                            return;
-                        }    
+                         
                         else
                         {
                             book.SoLuong += Int32.Parse(quantity.Text);
@@ -110,7 +109,6 @@ namespace QuanLyNhaSach
                     
 
                 }
-
 
             }
             else
