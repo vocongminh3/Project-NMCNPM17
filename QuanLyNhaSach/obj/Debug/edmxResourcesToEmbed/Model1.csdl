@@ -29,6 +29,7 @@
       <End Role="Sach" EntitySet="Saches" />
       <End Role="PhieuNhap" EntitySet="PhieuNhaps" />
     </AssociationSet>
+    <EntitySet Name="QuyDinhs" EntityType="QuanLyNhaSachModel.QuyDinh" />
   </EntityContainer>
   <EntityType Name="ChiTietHoaDon">
     <Key>
@@ -178,4 +179,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="QuyDinh">
+    <Key>
+      <PropertyRef Name="SoLuongSachTonToiThieuDeNhap" />
+    </Key>
+    <Property Name="SoLuongSachTonToiThieuDeNhap" Type="Int32" Nullable="false" />
+    <Property Name="SoLuongSachNhapToiThieuDeNhap" Type="Int32" />
+    <Property Name="TienToiDa" Type="Int32" />
+    <Property Name="SoLuongSachTonToiThieuSauKhiBan" Type="Int32" />
+    <Property Name="TienThuLonHonNo" Type="Boolean" />
+    <Property Name="id" Type="Int32" />
+  </EntityType>
 </Schema>

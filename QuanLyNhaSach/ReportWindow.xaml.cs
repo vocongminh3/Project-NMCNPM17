@@ -1,6 +1,7 @@
 ﻿using Microsoft.OData.Edm;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,9 @@ namespace QuanLyNhaSach
             var db = new QuanLyKho.QuanLyNhaSachEntities();
             var a = db.PhieuNhaps.ToList();
             LoadComboBox();
+            
+            test.ItemsSource = a;
+
         }
 
         private void searchReport_Click(object sender, RoutedEventArgs e)
@@ -62,7 +66,23 @@ namespace QuanLyNhaSach
                 var db = new QuanLyKho.QuanLyNhaSachEntities();
                 MessageBox.Show(month.Text + year.Text);
                 //test commit Viet
-            }    
+                DateTime dt1 = DateTime.Parse("07/12/2011");
+                DateTime dt2 = DateTime.Now;
+
+
+                if (dt1.Date > dt2.Date)
+                {
+                    //It's a later date
+                }
+                else
+                {
+                    //It's an earlier or equal date
+                }
+
+                
+
+
+            }
         }
     }
 }
