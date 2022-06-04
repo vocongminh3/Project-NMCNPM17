@@ -42,18 +42,29 @@
             <!--các element binding từ selected item test-->
             <materialDesign:Card Grid.Row="0" Margin="5">
                 <WrapPanel Margin="0 0 0 10">
-                    <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}">
-                        Báo Cáo
+                    <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" >
+                        Báo Cáo Tồn
                     </TextBlock>
                 </WrapPanel>
             </materialDesign:Card>
 
             <materialDesign:Card Grid.Row="1" Margin="5">
                 <WrapPanel>
-                    <TextBlock  Margin="15" Width="100">Tháng</TextBlock>
-                    <Button Name="addButton"  Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
-                    <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100" ></Button>
-                    <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100" ></Button>
+                    <ComboBox  Name="month"
+                                materialDesign:HintAssist.Hint="Tháng"
+                                Style="{StaticResource MaterialDesignFloatingHintComboBox}" Width="100" Margin="15">
+                    </ComboBox>
+                    <ComboBox   Name="year"
+                                materialDesign:HintAssist.Hint="Năm"
+                                Style="{StaticResource MaterialDesignFloatingHintComboBox}" Width="100">
+                    </ComboBox>
+                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="5"
+                                            Width="100"
+                                            Content="Tìm kiếm"
+                                            ToolTip="Resource name: MaterialDesignRaisedButton"
+                                            Name="searchButton"
+                                    Click="searchReport_Click"
+                                        ></Button>
                 </WrapPanel>
             </materialDesign:Card>
 
@@ -61,12 +72,11 @@
                 <ListView Name="input" ItemsSource="{Binding List}"  SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding MaPhieuNhap}"></GridViewColumn>
-                                <GridViewColumn Header="Tên Sách" DisplayMemberBinding="{Binding TenSach}"></GridViewColumn>
-                                <GridViewColumn Header="Thể Loại" DisplayMemberBinding="{Binding TenTheLoai}"></GridViewColumn>
-                                <GridViewColumn Header="Tác Giả" DisplayMemberBinding="{Binding TacGia}"></GridViewColumn>
-                                <GridViewColumn Header="Số Lượng" DisplayMemberBinding="{Binding SoLuong}"></GridViewColumn>
-                                <GridViewColumn Header="Ngày Nhập" DisplayMemberBinding="{Binding NgayNhap}"></GridViewColumn>
+                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding TenSach}"></GridViewColumn>
+                                <GridViewColumn Header="Tên Sách" DisplayMemberBinding="{Binding TonDau}"></GridViewColumn>
+                                <GridViewColumn Header="Thể Loại" DisplayMemberBinding="{Binding PhatSinh}"></GridViewColumn>
+                                <GridViewColumn Header="Tác Giả" DisplayMemberBinding="{Binding TonCuoi}"></GridViewColumn>
+                               
                             </GridView>
                         </ListView.View>
                     </ListView>

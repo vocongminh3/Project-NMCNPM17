@@ -125,7 +125,7 @@
                             </Grid>
                         </Grid>
                     </Button>
-                    <Button Grid.Column="4" ToolTip="Báo Cáo">
+                    <Button Grid.Column="4" Command="{Binding ReportCommand}" ToolTip="Báo Cáo">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
