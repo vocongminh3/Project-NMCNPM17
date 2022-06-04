@@ -23,6 +23,18 @@ namespace QuanLyNhaSach
 
     public partial class ReportWindow : Window
     {
+
+        public void LoadComboBox()
+        {
+            for(int i = 1; i <= 12; i++ )
+            {
+                month.Items.Add(i);
+            }
+            for (int i = 1999; i <= 2030; i++)
+            {
+                year.Items.Add(i);
+            }
+        }
         
         public ReportWindow()
         {
@@ -34,8 +46,23 @@ namespace QuanLyNhaSach
 
         private void reportLoaded(object sender, RoutedEventArgs e)
         {
-
+            var db = new QuanLyKho.QuanLyNhaSachEntities();
+            var a = db.PhieuNhaps.ToList();
+            LoadComboBox();
         }
 
+        private void searchReport_Click(object sender, RoutedEventArgs e)
+        {
+            if(month.SelectedItem == null || year.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn đủ năm và tháng");
+            }
+            else
+            {
+                var db = new QuanLyKho.QuanLyNhaSachEntities();
+                MessageBox.Show(month.Text + year.Text);
+                //test commit
+            }    
+        }
     }
 }
