@@ -64,13 +64,14 @@
         </EntityType>
         <EntityType Name="QuyDinh">
           <Key>
-            <PropertyRef Name="SoLuongSachTonToiThieuDeNhap" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="SoLuongSachTonToiThieuDeNhap" Type="int" Nullable="false" />
+          <Property Name="SoLuongSachTonToiThieuDeNhap" Type="int" />
           <Property Name="SoLuongSachNhapToiThieuDeNhap" Type="int" />
           <Property Name="TienToiDa" Type="int" />
           <Property Name="SoLuongSachTonToiThieuSauKhiBan" Type="int" />
           <Property Name="TienThuLonHonNo" Type="bit" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Sach">
           <Key>
@@ -369,13 +370,14 @@
         </Association>
         <EntityType Name="QuyDinh">
           <Key>
-            <PropertyRef Name="SoLuongSachTonToiThieuDeNhap" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="SoLuongSachTonToiThieuDeNhap" Type="Int32" Nullable="false" />
+          <Property Name="SoLuongSachTonToiThieuDeNhap" Type="Int32" />
           <Property Name="SoLuongSachNhapToiThieuDeNhap" Type="Int32" />
           <Property Name="TienToiDa" Type="Int32" />
           <Property Name="SoLuongSachTonToiThieuSauKhiBan" Type="Int32" />
           <Property Name="TienThuLonHonNo" Type="Boolean" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -471,6 +473,7 @@
           <EntitySetMapping Name="QuyDinhs">
             <EntityTypeMapping TypeName="QuanLyNhaSachModel.QuyDinh">
               <MappingFragment StoreEntitySet="QuyDinh">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="TienThuLonHonNo" ColumnName="TienThuLonHonNo" />
                 <ScalarProperty Name="SoLuongSachTonToiThieuSauKhiBan" ColumnName="SoLuongSachTonToiThieuSauKhiBan" />
                 <ScalarProperty Name="TienToiDa" ColumnName="TienToiDa" />

@@ -25,15 +25,7 @@ namespace QuanLyNhaSach
     public partial class RuleWindow : Window
     {
 
-        
-        
-        public RuleWindow()
-        {
-            InitializeComponent();
-
-        }
-
-        private void ruleLoaded(object sender, RoutedEventArgs e)
+        public void LoadData()
         {
             var db = new QuanLyKho.QuanLyNhaSachEntities();
             var quydinh = db.QuyDinhs.FirstOrDefault();
@@ -43,17 +35,29 @@ namespace QuanLyNhaSach
             tonsaukhiban.Text = quydinh.SoLuongSachTonToiThieuSauKhiBan.ToString();
             sotienthu.IsChecked = quydinh.TienThuLonHonNo;
         }
+        
+        public RuleWindow()
+        {
+            InitializeComponent();
+
+        }
+
+        private void ruleLoaded(object sender, RoutedEventArgs e)
+        {
+            LoadData();
+        }
 
         private void updateButton(object sender, RoutedEventArgs e)
         {
             var db = new QuanLyKho.QuanLyNhaSachEntities();
             var quydinh = db.QuyDinhs.FirstOrDefault();
             quydinh.SoLuongSachNhapToiThieuDeNhap = int.Parse(slnhaptoithieu.Text);
-            quydinh.SoLuongSachTonToiThieuDeNhap = int.Parse(slnhaptoithieu.Text);
+            quydinh.SoLuongSachTonToiThieuDeNhap = int.Parse(sltontoithieu.Text);
             quydinh.TienToiDa = int.Parse(notoida.Text);
             quydinh.SoLuongSachTonToiThieuSauKhiBan = int.Parse(tonsaukhiban.Text);
             quydinh.TienThuLonHonNo = sotienthu.IsChecked;
             db.SaveChanges();
+            LoadData();
         }
     }
     

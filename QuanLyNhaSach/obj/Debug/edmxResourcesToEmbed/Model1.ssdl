@@ -59,14 +59,14 @@
   </EntityType>
   <EntityType Name="QuyDinh">
     <Key>
-      <PropertyRef Name="SoLuongSachTonToiThieuDeNhap" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="SoLuongSachTonToiThieuDeNhap" Type="int" Nullable="false" />
+    <Property Name="SoLuongSachTonToiThieuDeNhap" Type="int" />
     <Property Name="SoLuongSachNhapToiThieuDeNhap" Type="int" />
     <Property Name="TienToiDa" Type="int" />
     <Property Name="SoLuongSachTonToiThieuSauKhiBan" Type="int" />
     <Property Name="TienThuLonHonNo" Type="bit" />
-    <Property Name="id" Type="int" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="Sach">
     <Key>
