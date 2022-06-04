@@ -72,27 +72,42 @@ namespace QuanLyNhaSach
                     var phieunhap = new QuanLyKho.PhieuNhap();
                     //phieunhap.NgayNhap = selectedDate.Value;
                     var book = db.Saches.Where(s => s.TenSach == name.Text).FirstOrDefault();
-                    if(book == null)
+
+                    var quydinh = db.QuyDinhs.FirstOrDefault();
+                    if(quydinh.SoLuongSachNhapToiThieuDeNhap > Int32.Parse(quantity.Text))
                     {
-                        var newBook = new QuanLyKho.Sach();
-                        newBook.TenSach = name.Text;
-                        newBook.TenTheLoai = type.Text;
-                        newBook.TacGia = author.Text;
-                        newBook.SoLuong = Int32.Parse(quantity.Text);
-                        db.Saches.Add(newBook);
-                        phieunhap.MaSach =  newBook.MaSach;
+                        MessageBox.Show("Số lượng nhập phải lớn hơn  " + quydinh.SoLuongSachNhapToiThieuDeNhap.ToString());
                     }
                     else
                     {
-                        book.SoLuong += Int32.Parse(quantity.Text);
+                        if (book == null)
+                        {
+                            var newBook = new QuanLyKho.Sach();
+                            newBook.TenSach = name.Text;
+                            newBook.TenTheLoai = type.Text;
+                            newBook.TacGia = author.Text;
+                            newBook.SoLuong = Int32.Parse(quantity.Text);
+                            db.Saches.Add(newBook);
+                            phieunhap.MaSach = newBook.MaSach;
+                        }
+                        else if (quydinh.SoLuongSachTonToiThieuDeNhap < book.SoLuong)
+                        {
+                            MessageBox.Show("Chỉ nhâp những sách có lượng tồn ít hơn " + quydinh.SoLuongSachTonToiThieuDeNhap.ToString());
+                            return;
+                        }    
+                        else
+                        {
+                            book.SoLuong += Int32.Parse(quantity.Text);
+                        }
+
+                        phieunhap.NgayNhap = selectedDate.Value;
+                        phieunhap.SoLuong = Int32.Parse(quantity.Text);
+                        //phieunhap.MaSach = book.MaSach;
+                        db.PhieuNhaps.Add(phieunhap);
+
+                        db.SaveChanges();
                     }
                     
-                    phieunhap.NgayNhap = selectedDate.Value;
-                    phieunhap.SoLuong = Int32.Parse(quantity.Text);
-                    //phieunhap.MaSach = book.MaSach;
-                    db.PhieuNhaps.Add(phieunhap);
-                    
-                    db.SaveChanges();
 
                 }
 

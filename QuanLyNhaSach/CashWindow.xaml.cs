@@ -89,6 +89,8 @@ namespace QuanLyNhaSach
                 //cap nhap so tien khach hang
                 var changeCustomer = db.KhachHangs.Find(customer.MaKhachHang);
                 changeCustomer.Tien += moneyText;
+
+
                 db.SaveChanges();
 
                 db.PhieuThuTiens.Add(cash);
