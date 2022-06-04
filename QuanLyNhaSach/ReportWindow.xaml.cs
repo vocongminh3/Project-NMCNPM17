@@ -61,7 +61,7 @@ namespace QuanLyNhaSach
             {
                 var db = new QuanLyKho.QuanLyNhaSachEntities();
                 MessageBox.Show(month.Text + year.Text);
-                //test commit
+                //test commit Viet
             }    
         }
     }
