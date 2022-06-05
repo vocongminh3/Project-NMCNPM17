@@ -72,7 +72,7 @@ namespace QuanLyNhaSach
             //var selectedBook = bookList.SelectedItem as QuanLyKho.Sach;
             
         }
-
+        //upload file sql
 
         private void PhieuNhap_button(object sender, RoutedEventArgs e)
         {
