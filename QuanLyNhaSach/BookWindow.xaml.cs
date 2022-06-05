@@ -92,19 +92,22 @@ namespace QuanLyNhaSach
                             newBook.SoLuong = Int32.Parse(quantity.Text);
                             db.Saches.Add(newBook);
                             phieunhap.MaSach = newBook.MaSach;
+                            LoadData();
                         }
                          
                         else
                         {
                             book.SoLuong += Int32.Parse(quantity.Text);
+                            LoadData();
                         }
 
                         phieunhap.NgayNhap = selectedDate.Value;
                         phieunhap.SoLuong = Int32.Parse(quantity.Text);
-                        //phieunhap.MaSach = book.MaSach;
+                        phieunhap.MaSach = book.MaSach;
                         db.PhieuNhaps.Add(phieunhap);
 
                         db.SaveChanges();
+                        LoadData();
                     }
                     
 
